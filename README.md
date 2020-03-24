@@ -31,8 +31,8 @@ There is one catch... you cannot see the entire maze! You will be limited to a r
 ## Planning
 - Gantt Chart for progress tracking: [Gantt Chart](https://docs.google.com/spreadsheets/d/1G_G0ksrQKUb6JlzIhDMscehSxYiok8L5uuWnNtSqWow/edit?usp=sharing)
 - User Stories for use-cases: [User Stories](https://docs.google.com/spreadsheets/d/1G_G0ksrQKUb6JlzIhDMscehSxYiok8L5uuWnNtSqWow/edit#gid=253511204?usp=sharing)
-<!-- - Wireframes: [Wireframes Navigator](https://sinsys.github.io/taskmon_client/wireframes/html/index.html)
-- User Flows: [User Flows on Draw.io](https://drive.google.com/file/d/1Z--cjFDzV-dabEC5hAtgKheW9UV70B5F/view?usp=sharing) -->
+- Wireframes: [Wireframes Navigator](https://sinsys.github.io/amazement_client/wireframes/index.html)
+<!-- - User Flows: [User Flows on Draw.io](https://drive.google.com/file/d/1Z--cjFDzV-dabEC5hAtgKheW9UV70B5F/view?usp=sharing) -->
 
 ## Requirements
 
