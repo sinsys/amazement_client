@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { MazeContextProvider } from 'contexts/MazeContext';
 import Maze from './Maze';
 
 it('renders without crashing', () => {
