@@ -12,7 +12,7 @@ There is one catch... you cannot see the entire maze! You will be limited to a r
 *  [Planning](#planning)
 *  [Requirements](#requirements)
 *  [Available Scripts](#available-scripts)
-*  
+  
 ## Features
  - 3 levels of difficulty
  - Near infinite possible maze combinations
@@ -29,6 +29,7 @@ There is one catch... you cannot see the entire maze! You will be limited to a r
 | **pgSQL** | **PostgreSQL** | *10.12* |
 
 ## Planning
+- Kanban Board: [Kanban Board](https://github.com/sinsys/amazement_client/projects/1)
 - Gantt Chart for progress tracking: [Gantt Chart](https://docs.google.com/spreadsheets/d/1G_G0ksrQKUb6JlzIhDMscehSxYiok8L5uuWnNtSqWow/edit?usp=sharing)
 - User Stories for use-cases: [User Stories](https://docs.google.com/spreadsheets/d/1G_G0ksrQKUb6JlzIhDMscehSxYiok8L5uuWnNtSqWow/edit#gid=253511204?usp=sharing)
 - Wireframes: [Wireframes Navigator](https://sinsys.github.io/amazement_client/wireframes/index.html)
