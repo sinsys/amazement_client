@@ -110,8 +110,8 @@ const validMove = (cell, direction) => {
 };
 
 // Check if user won the game
-const checkWin = (posX, posY, maxX, maxY) => {
-  return (posX === maxX && posY === maxY) ? true : false;
+const checkWin = (posX, posY, winX, winY) => {
+  return (posX === winX && posY === winY) ? true : false;
 }
 
 module.exports = {
