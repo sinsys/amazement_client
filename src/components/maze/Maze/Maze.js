@@ -23,7 +23,7 @@ const Maze = () => {
     });
   };
 
-  const canvasRef = React.useRef(null);
+  const mazeCanvasRef = React.useRef(null);
 
   React.useEffect(() => {
 
@@ -44,7 +44,7 @@ const Maze = () => {
 
     } else {
 
-      const canvas = canvasRef.current;
+      const canvas = mazeCanvasRef.current;
       const ctx = canvas.getContext('2d');
       const scale = mazeContext.state.scale;
       const maze = mazeContext.state.maze;
@@ -92,7 +92,7 @@ const Maze = () => {
 
   return (
     <canvas
-      ref={canvasRef}
+      ref={mazeCanvasRef}
       width={mazeContext.state.scale * 15}
       height={mazeContext.state.scale * 15}
     />
