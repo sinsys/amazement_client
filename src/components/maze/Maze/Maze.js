@@ -1,5 +1,5 @@
 // Canvas Component - Maze Canvas
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 // Contexts / Hooks
 import { MazeContext } from 'contexts/MazeContext';
@@ -11,47 +11,21 @@ const Maze = () => {
 
   const mazeContext = useContext(MazeContext);
 
-  const createMaze = (options) => {
-    mazeContext.dispatch({
-      type: 'create-maze',
-      payload: {
-        active: true,
-        scale: options.scale,
-        size: options.size,
-        difficulty: options.difficulty
-      }
-    });
-  };
-
   const mazeCanvasRef = React.useRef(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
 
-    if (!mazeContext.state.active){
-
-      // Set scale of each cell
-      let scale = window.innerWidth - window.innerHeight > 0
-        ? window.innerHeight / 15
-        : window.innerWidth / 15;
-        
-      const options = {
-        scale: scale,
-        size: [15,15],
-        difficulty: "Easy"
-      };
-
-      createMaze(options);
-
-    } else {
+    if (mazeContext.state.active){
 
       const canvas = mazeCanvasRef.current;
+      
       const ctx = canvas.getContext('2d');
       const scale = mazeContext.state.scale;
       const maze = mazeContext.state.maze;
 
       ctx.fillStyle = "#CCC";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.lineWidth = 5;
+      ctx.lineWidth = 6;
 
       maze.forEach((row, y) => {
         row.forEach((cell, x) => {
@@ -95,6 +69,11 @@ const Maze = () => {
       ref={mazeCanvasRef}
       width={mazeContext.state.scale * 15}
       height={mazeContext.state.scale * 15}
+      style={{
+        left: mazeContext.state.mazePosition[0],
+        top: mazeContext.state.mazePosition[1]
+      }}
+      id="maze-canvas"
     />
   );
 };

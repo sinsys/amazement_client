@@ -5,10 +5,8 @@ import { useHistory } from 'react-router-dom';
 // Element Components
 import Button from 'components/elements/Button/Button';
 
-// Files / Icons
-// import { faClock, faProjectDiagram, faStopwatch, faTint, faSignInAlt, faTasks } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+// Files
+import 'components/views/views.scss';
 import './Landing.scss';
 
 const Landing = () => {
