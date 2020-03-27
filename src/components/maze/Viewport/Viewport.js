@@ -1,19 +1,16 @@
 // Scaffolding Component - Header
 import React, { useContext, useEffect, useState } from 'react';
 
-// Animations
-// import { motion } from "framer-motion";
-
 // Contexts / Hooks
 import { MazeContext } from 'contexts/MazeContext';
-// Controls
-// import { useKeyPress } from 'hooks/Keyboard';
+import { useKeyPress } from 'hooks/Keyboard';
+
+// Utilities / Helpers
 import { validMove } from 'utils/maze-utility';
+
 // Components 
 import Maze from 'components/maze/Maze/Maze';
 import Sprite from 'components/maze/Sprite/Sprite';
-
-import { useKeyPress } from 'hooks/Keyboard';
 
 // Files / Images
 import './Viewport.scss';
@@ -23,8 +20,10 @@ const Viewport = () => {
   // Initializes our input context
   const { state, dispatch } = useContext(MazeContext);
 
+  // Sets up a state for moving.
   const [moving, setMoving] = useState(false);
 
+  // These provide Boolean values for when arrow keys are pressed or not
   const inputs = {
     inputUp: useKeyPress('ArrowUp'),
     inputRight: useKeyPress('ArrowRight'),
@@ -32,6 +31,7 @@ const Viewport = () => {
     inputLeft: useKeyPress('ArrowLeft')
   }
 
+  // Sets a delay to prevent overflow with movements. This is essentially a debouncer/throttler function
   const handleMove = () => {
     setMoving(true);
     setTimeout(() => {
@@ -41,9 +41,16 @@ const Viewport = () => {
 
   useEffect(() => {
 
+  // Ensure a maze is created
   if ( state.active ) {
+    // Get our active cell (we will need this for collision detection)
     let cell = state.maze[ state.playerPosition[0] ][ state.playerPosition[1] ];
     
+    // Handle inputs from the user
+    /* Check goes as follows:
+     - If the keyboard key is pressed
+     - If it is a valid move (not out of bounds or colliding with a wall)
+     - If we aren't already moving */
     if ( inputs.inputUp ) {
       if ( validMove(cell, 'up') ) {
         if ( !moving ) { 
@@ -82,8 +89,10 @@ const Viewport = () => {
   return (
 
     <section className="Viewport_wrapper">
-      <Maze />
-      <Sprite />
+      <div className="mobile-controls"> {/* Need to implement */}
+        <Maze />
+        <Sprite />
+      </div>
     </section>
 
   );

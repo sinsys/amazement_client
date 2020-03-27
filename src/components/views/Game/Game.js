@@ -31,7 +31,6 @@ const Game = () => {
   };
 
   useEffect(() => {
-
     // Set up a new maze if current game is not active
     if (!mazeContext.state.active){
       let size = mazeContext.state.size;
@@ -44,6 +43,7 @@ const Game = () => {
         scale: scale,
         size: size,
         difficulty: "Easy",
+        // This is for responsive reasons. Will scale to the screen size and place the map on coordinates row:0 column:0 visually
         mazePosition: [((scale * size) / 2 - (scale / 2)), ((scale * size) / 2 - (scale / 2))]
       };
       createMaze(options)

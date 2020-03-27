@@ -7,8 +7,10 @@ import React, {
 // Utilities / Helpers
 import { createMazeObj } from 'utils/maze-utility';
 
+// Create our context
 let MazeContext = createContext();
 
+// Set default values
 let initialState = {
   scale: 0,
   size: 15,
@@ -22,6 +24,7 @@ let initialState = {
   activeCell: []
 };
 
+// Reducer to set specific state update commands
 let reducer = (state, action) => {
   let payload = action.payload;
   switch (action.type) {
@@ -31,6 +34,8 @@ let reducer = (state, action) => {
         size: int,
         active: bool,
         difficulty: string
+        mazePosition: [x,y]
+        scale: float
       } */
       return {
         ...state,

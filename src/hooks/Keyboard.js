@@ -1,11 +1,10 @@
+// Hook - Keyboard inputs - Detects when keyboard keys are pressed
 import { useState, useEffect } from 'react';
 
-// Hook
 function useKeyPress(targetKey) {
   // State for keeping track of whether key is pressed
   const [keyPressed, setKeyPressed] = useState(false);
-  const [active, setActive] = useState(false);
-  
+
   // If pressed key is our target key then set to true
   function downHandler({ key }) {
     if (key === targetKey) {
@@ -29,6 +28,7 @@ function useKeyPress(targetKey) {
       window.removeEventListener('keydown', downHandler);
       window.removeEventListener('keyup', upHandler);
     };
+  // eslint-disable-next-line
   }, []); // Empty array ensures that effect is only run on mount and unmount
 
   return keyPressed;
