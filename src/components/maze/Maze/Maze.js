@@ -1,90 +1,40 @@
 // Canvas Component - Maze Canvas
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 // Contexts / Hooks
 import { MazeContext } from 'contexts/MazeContext';
+
+// Utilities / Helpers
+import { drawMaze } from 'utils/maze-utility';
 
 // Files
 import './Maze.scss';
 
 const Maze = () => {
 
+  // Establish our maze context
   const mazeContext = useContext(MazeContext);
 
-  const createMaze = (options) => {
-    mazeContext.dispatch({
-      type: 'create-maze',
-      payload: {
-        active: true,
-        scale: options.scale,
-        size: options.size,
-        difficulty: options.difficulty
-      }
-    });
-  };
-
+  // Reference to our canvas to draw on
   const mazeCanvasRef = React.useRef(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
 
-    if (!mazeContext.state.active){
+    // Ensure our maze is created
+    if (mazeContext.state.active){
 
-      // Set scale of each cell
-      let scale = window.innerWidth - window.innerHeight > 0
-        ? window.innerHeight / 15
-        : window.innerWidth / 15;
-        
-      const options = {
-        scale: scale,
-        size: [15,15],
-        difficulty: "Easy"
-      };
-
-      createMaze(options);
-
-    } else {
-
+      // Set our reference to the canvas
       const canvas = mazeCanvasRef.current;
+      // Setup canvas context
       const ctx = canvas.getContext('2d');
+      // Setup individual cell scale
       const scale = mazeContext.state.scale;
+      // Set our maze array
       const maze = mazeContext.state.maze;
 
-      ctx.fillStyle = "#CCC";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.lineWidth = 5;
 
-      maze.forEach((row, y) => {
-        row.forEach((cell, x) => {
-          cell.forEach((edge, e) => {
-            ctx.beginPath();
-            if ( !edge ){
-              switch (e) {
-                case 0:
-                  ctx.moveTo(x * scale - 2.5, y * scale);
-                  ctx.lineTo(x * scale + scale + 2.5, y * scale);
-                  ctx.stroke();
-                break;
-                case 1:
-                  ctx.moveTo(x * scale + scale, y * scale - 2.5);
-                  ctx.lineTo(x * scale + scale, y * scale + scale + 2.5);
-                  ctx.stroke();
-                break;
-                case 2:
-                  ctx.moveTo(x * scale - 2.5, y * scale + scale);
-                  ctx.lineTo(x * scale + scale + 2.5, y * scale + scale);
-                  ctx.stroke();
-                break;
-                case 3:
-                  ctx.moveTo(x * scale, y * scale - 2.5);
-                  ctx.lineTo(x * scale, y * scale + scale + 2.5);
-                  ctx.stroke();
-                break;
-                default: return;
-              }
-            }
-          });
-        });
-      });
+
+      drawMaze(maze, scale, ctx, canvas);
 
     }
   // eslint-disable-next-line
@@ -95,6 +45,11 @@ const Maze = () => {
       ref={mazeCanvasRef}
       width={mazeContext.state.scale * 15}
       height={mazeContext.state.scale * 15}
+      style={{
+        left: mazeContext.state.mazePosition[0],
+        top: mazeContext.state.mazePosition[1]
+      }}
+      id="maze-canvas"
     />
   );
 };

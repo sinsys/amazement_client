@@ -1,0 +1,10 @@
+.Viewport_wrapper {
+  height: 100vh;
+  max-height: 100vw;
+  width: 100vw;
+  max-width: 100vh;
+  border: 3px solid #CCC;
+  overflow: hidden;
+  background: #666;
+  position: relative;
+}
