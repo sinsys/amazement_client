@@ -44,6 +44,7 @@ const Game = () => {
         size: size,
         difficulty: "Easy",
         // This is for responsive reasons. Will scale to the screen size and place the map on coordinates row:0 column:0 visually
+        // This moves the map to line up with the centered Sprite / Character
         mazePosition: [((scale * size) / 2 - (scale / 2)), ((scale * size) / 2 - (scale / 2))]
       };
       createMaze(options)

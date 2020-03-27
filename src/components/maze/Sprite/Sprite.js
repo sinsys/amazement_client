@@ -6,7 +6,7 @@ import { MazeContext } from 'contexts/MazeContext';
 
 // Files / Images
 import './Sprite.scss';
-
+import walkDown from 'assets/images/sprites/sprite_down.gif';
 
 const Sprite = () => {
 
@@ -38,6 +38,15 @@ const Sprite = () => {
 
   return (
 
+    // <img 
+    //   src={walkDown} 
+    //   id="sprite-canvas"
+    //   style={{
+    //     left: mazeContext.state.mazePosition[0],
+    //     top: mazeContext.state.mazePosition[1] - mazeContext.state.scale / 2,
+    //     width: mazeContext.state.scale
+    //   }}
+    // />
     <canvas
       ref={spriteCanvasRef}
       width={mazeContext.state.scale * mazeContext.state.size}

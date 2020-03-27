@@ -32,8 +32,6 @@ const Maze = () => {
       // Set our maze array
       const maze = mazeContext.state.maze;
 
-
-
       drawMaze(maze, scale, ctx, canvas);
 
     }
