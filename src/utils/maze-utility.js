@@ -105,7 +105,7 @@ const validMove = (cell, direction) => {
     case 'left':
       return cell[3] ? true : false;
     default:
-      return;
+      return false;
   };
 };
 
