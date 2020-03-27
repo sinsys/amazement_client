@@ -43,7 +43,7 @@ const Viewport = () => {
 
   if ( state.active ) {
     let cell = state.maze[ state.playerPosition[0] ][ state.playerPosition[1] ];
-
+    
     if ( inputs.inputUp ) {
       if ( validMove(cell, 'up') ) {
         if ( !moving ) { 
@@ -51,24 +51,21 @@ const Viewport = () => {
           dispatch({ type: 'move-up' });
         }
       };
-    };
-    if ( inputs.inputRight ) {
+    } else if ( inputs.inputRight ) {
       if ( validMove(cell, 'right') ) {
         if ( !moving ) { 
           handleMove();
           dispatch({ type: 'move-right' });
         }
       };
-    };
-    if ( inputs.inputDown ) {
+    } else if ( inputs.inputDown ) {
       if ( validMove(cell, 'down') ) {
         if ( !moving ) { 
           handleMove();
           dispatch({ type: 'move-down' });
         }
       };
-    };
-    if ( inputs.inputLeft ) {
+    } else if ( inputs.inputLeft ) {
       if ( validMove(cell, 'left') ) {
         if ( !moving ) { 
           handleMove();
