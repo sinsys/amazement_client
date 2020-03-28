@@ -1,0 +1,54 @@
+@import 'themes/_dark.scss';
+
+.Main_wrapper {
+  overflow: hidden;
+}
+
+.logo-animated {
+  background: 50% 100% / 50% 50% no-repeat
+              radial-gradient(ellipse at bottom, $shade100, transparent, transparent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 10vw;
+  font-family: 'Inknut Antiqua', serif;
+  animation: reveal 3000ms ease-in-out forwards 200ms,
+             glow 2500ms linear infinite 2000ms;
+
+  @keyframes reveal {
+    80%{
+      letter-spacing: 8px;
+      font-size: 8vw;
+    }
+    100% {
+      background-size: 300% 300%;
+    }
+  }
+  @keyframes glow {
+    40% {
+      text-shadow: 0 0 8px $primary;
+    }
+  }
+}
+.maze-highlight {
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 0;
+  font-family: 'Geo', sans-serif;
+  animation: revealMaze 3000ms ease-in-out forwards 200ms;
+  @keyframes revealMaze {
+    80% {
+      color: $shade100;
+      font-size: 20vw;
+    }
+    100% {
+      color: $primary;
+      font-size: 15vw;
+    }
+  }
+}
+
+.btn-options {
+  flex-basis: 30%;
+}

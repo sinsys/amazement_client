@@ -5,7 +5,8 @@ import { Switch, Route } from 'react-router-dom';
 // Contexts / Hooks
 import { MazeContextProvider } from 'contexts/MazeContext';
 
-// Canvas Components
+// Views
+import Home from 'components/views/Home/Home';
 import Game from 'components/views/Game/Game';
 
 // Files
@@ -19,6 +20,10 @@ function App() {
         <Switch>
           <Route
             exact path={'/'}
+            component={Home}
+          />
+          <Route
+            exact path={'/game'}
             component={Game}
           />
         </Switch>
