@@ -5,8 +5,10 @@
 }
 
 .logo-animated {
+  display: flex;
+  align-items: center;
   background: 50% 100% / 50% 50% no-repeat
-              radial-gradient(ellipse at bottom, $shade100, transparent, transparent);
+              radial-gradient(ellipse at bottom, $shadeMin, transparent, transparent);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -39,16 +41,38 @@
   animation: revealMaze 3000ms ease-in-out forwards 200ms;
   @keyframes revealMaze {
     80% {
-      color: $shade100;
+      color: $shadeMin;
       font-size: 20vw;
     }
     100% {
-      color: $primary;
+      color: $secondary;
       font-size: 15vw;
     }
   }
 }
+.logo-animated,
+.btn-options_wrapper {
+  flex-basis: 50%;
+}
+.btn-options_wrapper {
 
-.btn-options {
-  flex-basis: 30%;
+}
+.btn-option {
+  display: flex;
+  width: 100%;
+}
+
+.btn-options-row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-options-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
