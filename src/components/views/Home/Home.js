@@ -20,6 +20,9 @@ const Landing = () => {
         <span className="maze-highlight">MAZE</span>
         ment
       </div>
+      <blockquote className="app-description">
+        A timed mazerunner game
+      </blockquote>
 
       <section className="btn-options_wrapper">
         <div className="btn-option">

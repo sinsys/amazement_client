@@ -13,6 +13,7 @@
   background-clip: text;
   color: transparent;
   font-size: 10vw;
+  line-height: 10vw;
   font-family: 'Inknut Antiqua', serif;
   animation: reveal 3000ms ease-in-out forwards 200ms,
              glow 2500ms linear infinite 2000ms;
@@ -52,11 +53,45 @@
 }
 .logo-animated,
 .btn-options_wrapper {
-  flex-basis: 50%;
-}
-.btn-options_wrapper {
 
 }
+blockquote {
+  color: $shade20;
+  font-size: 2rem;
+  font-family: 'Geo', sans-serif;
+  opacity: 0;
+  letter-spacing: 5rem;
+  position: relative;
+  animation: revealCaption 1000ms ease-in-out forwards 200ms;
+  animation-delay: 3000ms;
+  white-space: nowrap;
+  @keyframes revealCaption {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      letter-spacing: 1px;
+    }
+  }
+}
+.btn-options_wrapper {
+  position: relative;
+  margin-top: 10rem;
+  opacity: 0;
+  animation: revealButtons 1000ms ease-in-out forwards 200ms;
+  animation-delay: 3000ms;
+  @keyframes revealButtons {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      margin-top: 2rem;
+      opacity: 1;
+    }
+  }
+}
+
 .btn-option {
   display: flex;
   width: 100%;
