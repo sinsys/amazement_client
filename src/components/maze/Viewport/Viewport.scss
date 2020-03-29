@@ -15,32 +15,41 @@
 .mobile-controls-left {
   position: absolute;
   z-index: 100;
-  background: rgba(0,0,0,0.1);
   width: 100%;
   height: 100%;
+  transition: background 0.3s ease-in-out;
 }
-
+.mobile-controls-up:active,
+.mobile-controls-right:active,
+.mobile-controls-down:active,
+.mobile-controls-left:active {
+  background: rgba(100,255,100,0.25);
+}
 .mobile-controls-up {
   top: 0;
   left: 0;
   right: 0;
   clip-path: polygon(0 0, 50% 50%, 100% 0);
+  // background: rgba(100,255,100,0.25);
 }
 .mobile-controls-right {
   top: 0;
   right: 0;
   bottom: 0;
   clip-path: polygon(50% 50%, 100% 100%, 100% 0%);
+  // background: rgba(100,100,255,0.25);
 }
 .mobile-controls-down {
   left: 0;
   bottom: 0;
   right: 0;
   clip-path: polygon(50% 50%, 0 100%, 100% 100%);
+  // background: rgba(255,100,100,0.25);
 }
 .mobile-controls-left {
   top: 0;
   right: 0;
   bottom: 0;
   clip-path: polygon(0 100%, 0 0, 50% 50%);
+  // background: rgba(255,100,255,0.25);
 }
