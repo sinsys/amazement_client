@@ -39,7 +39,17 @@ const Viewport = () => {
     }, 300);
   };
 
+  const handleMobileMove = (dir) => {
+    if ( validMove(state.maze[ state.playerPosition[0] ][ state.playerPosition[1] ], dir) ) {
+      if ( !moving ) { 
+        dispatch({ type: `move-${dir}` });
+        handleMove();
+      }
+    };
+  };
+
   useEffect(() => {
+
 
   // Ensure a maze is created
   if ( state.active ) {
@@ -54,6 +64,7 @@ const Viewport = () => {
      - If the keyboard key is pressed
      - If it is a valid move (not out of bounds or colliding with a wall)
      - Make sure we aren't moving - movement dispatches overflow without debounce */
+
     if ( inputs.inputUp ) {
       if ( validMove(cell, 'up') ) {
         if ( !moving ) { 
@@ -92,10 +103,12 @@ const Viewport = () => {
   return (
 
     <section className="Viewport_wrapper">
-      <div className="mobile-controls"> {/* Need to implement */}
-        <Maze />
-        <Sprite />
-      </div>
+      <div className="mobile-controls-up" onClick={()=> handleMobileMove('up') } />
+      <div className="mobile-controls-right" onClick={()=> handleMobileMove('right') } />
+      <div className="mobile-controls-down" onClick={()=> handleMobileMove('down') } />
+      <div className="mobile-controls-left" onClick={()=> handleMobileMove('left') } />
+      <Maze />
+      <Sprite />
     </section>
 
   );
