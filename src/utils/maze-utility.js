@@ -110,8 +110,8 @@ const validMove = (cell, direction) => {
 };
 
 // Check if user won the game
-const checkWin = (posX, posY, winX, winY) => {
-  return (posX === winX && posY === winY) ? true : false;
+const checkWin = (playerPos, winPos) => {
+  return (playerPos[0] === winPos[0] && playerPos[1] === winPos[1]) ? true : false;
 };
 
 // Draw the maze on canvas

@@ -55,9 +55,24 @@
 }
 .draw-border-login {
   @include btn-border-drawing($shade60, $altSuccess, 4px, bottom, right);
+  color: $altSuccess;
 }
 .draw-border-signup {
   @include btn-border-drawing($shade60, $secondary, 4px, bottom, right);
+  color: $secondary;
+}
+
+.draw-border-easy {
+  @include btn-border-drawing($shade60, $success, 4px, bottom, right);
+  color: $success;
+}
+.draw-border-medium {
+  @include btn-border-drawing($shade60, $secondary, 4px, bottom, right);
+  color: $secondary;
+}
+.draw-border-hard {
+  @include btn-border-drawing($shade60, $error, 4px, bottom, right);
+  color: $error;
 }
 
 .btn {
