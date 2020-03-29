@@ -15,11 +15,16 @@
 .mobile-controls-left {
   position: absolute;
   z-index: 100;
-  background: rgba(0,0,0,0.1);
   width: 100%;
   height: 100%;
+  transition: background 0.3s ease-in-out;
 }
-
+.mobile-controls-up:active,
+.mobile-controls-right:active,
+.mobile-controls-down:active,
+.mobile-controls-left:active {
+  background: rgba(100,255,100,0.25);
+}
 .mobile-controls-up {
   top: 0;
   left: 0;
