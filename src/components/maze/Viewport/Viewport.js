@@ -20,6 +20,16 @@ const Viewport = () => {
   // Initializes our input context
   const { state, dispatch } = useContext(MazeContext);
 
+  // Initializes touch state
+  const [ touch, setTouch ] = useState(
+    {
+      up: false,
+      right: false,
+      down: false,
+      left: false
+    }
+  );
+
   // Sets up a state for moving.
   const [moving, setMoving] = useState(false);
 
@@ -65,28 +75,28 @@ const Viewport = () => {
      - If it is a valid move (not out of bounds or colliding with a wall)
      - Make sure we aren't moving - movement dispatches overflow without debounce */
 
-    if ( inputs.inputUp ) {
+    if ( inputs.inputUp || touch.up ) {
       if ( validMove(cell, 'up') ) {
         if ( !moving ) { 
           dispatch({ type: 'move-up' });
           handleMove();
         }
       };
-    } else if ( inputs.inputRight ) {
+    } else if ( inputs.inputRight || touch.right ) {
       if ( validMove(cell, 'right') ) {
         if ( !moving ) { 
           dispatch({ type: 'move-right' });
           handleMove();
         }
       };
-    } else if ( inputs.inputDown ) {
+    } else if ( inputs.inputDown || touch.down ) {
       if ( validMove(cell, 'down') ) {
         if ( !moving ) { 
           dispatch({ type: 'move-down' });
           handleMove();
         }
       };
-    } else if ( inputs.inputLeft ) {
+    } else if ( inputs.inputLeft || touch.left ) {
       if ( validMove(cell, 'left') ) {
         if ( !moving ) { 
           dispatch({ type: 'move-left' });
@@ -98,15 +108,31 @@ const Viewport = () => {
   }
 
   // eslint-disable-next-line
-  },[state.playerPosition, inputs]);
+  },[state.playerPosition, inputs, touch]);
 
   return (
 
     <section className="Viewport_wrapper">
-      <div className="mobile-controls-up" onClick={()=> handleMobileMove('up') } />
-      <div className="mobile-controls-right" onClick={()=> handleMobileMove('right') } />
-      <div className="mobile-controls-down" onClick={()=> handleMobileMove('down') } />
-      <div className="mobile-controls-left" onClick={()=> handleMobileMove('left') } />
+      {/* Need to put the mobile controls into a component and clean up the DRY touch mangement */}
+      <div 
+        className="mobile-controls-up" 
+        onTouchStart={(e)=> setTouch({ up: true, right: false, down: false, left: false })}
+        onTouchEnd={(e) => setTouch({ up: false, right: false, down: false, left: false })}
+      />
+      <div 
+        className="mobile-controls-right"
+        onTouchStart={(e)=> setTouch({ up: false, right: true, down: false, left: false })}
+        onTouchEnd={(e) => setTouch({ up: false, right: false, down: false, left: false })}
+      />
+      <div 
+        className="mobile-controls-down"
+        onTouchStart={(e)=> setTouch({ up: false, right: false, down: true, left: false })}
+        onTouchEnd={(e) => setTouch({ up: false, right: false, down: false, left: false })}
+      />
+      <div className="mobile-controls-left"
+        onTouchStart={(e)=> setTouch({ up: false, right: false, down: false, left: true })}
+        onTouchEnd={(e) => setTouch({ up: false, right: false, down: false, left: false })} 
+      />
       <Maze />
       <Sprite />
     </section>
