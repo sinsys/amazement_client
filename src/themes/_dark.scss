@@ -1,0 +1,27 @@
+// Global SCSS variables file for "dark" theme
+
+// Grayscale shades
+$shadeMin: #FEFEFE;
+$shade20: #CCCCCC;
+$shade40: #AAAAAA;
+$shade60: #999999;
+$shade80: #666666;
+$shade100: #333333;
+$shadeMax: #010101;
+
+// Colors
+$primary: #5D98E8;
+$secondary: #FFFB87;
+$success: #82E82E;
+$error: #EB5550;
+
+$altSuccess: #9ED466;
+// Fonts
+// Use with font-family: 'Titillium Web', ;
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web&display=swap');
+
+// Use with font-family: 'Inknut Antiqua', serif;
+@import url('https://fonts.googleapis.com/css?family=Inknut+Antiqua&display=swap');
+
+// Use with font-family: 'Geo', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Geo&display=swap');

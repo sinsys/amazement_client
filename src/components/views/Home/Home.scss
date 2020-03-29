@@ -1,0 +1,135 @@
+@import 'themes/_dark.scss';
+$bg-img: url('../../../assets/images/maze_bg.svg');
+
+.Home_wrapper {
+  overflow: hidden;
+	background-image: $bg-img;
+  background-position: 0px 0px;
+  background-repeat: repeat;
+	animation: animatedBackground 15s ease-in-out infinite;
+  @keyframes animatedBackground {
+    0% {
+      background-position: 0 0;
+    }
+    25% {
+      background-position: 0 100vw;
+    }
+    50% {
+      background-position: 100vh 100vw;
+    }
+    75% {
+      background-position: 100vh 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+}
+
+.logo-animated {
+  display: flex;
+  align-items: center;
+  background: 50% 100% / 50% 50% no-repeat
+              radial-gradient(ellipse at bottom, $shadeMin, transparent, transparent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 10vw;
+  line-height: 10vw;
+  font-family: 'Inknut Antiqua', serif;
+  animation: reveal 3000ms ease-in-out forwards 200ms,
+             glow 2500ms linear infinite 2000ms;
+
+  @keyframes reveal {
+    80%{
+      letter-spacing: 8px;
+      font-size: 8vw;
+    }
+    100% {
+      background-size: 300% 300%;
+    }
+  }
+  @keyframes glow {
+    40% {
+      text-shadow: 0 0 8px $primary;
+    }
+  }
+}
+.maze-highlight {
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 0;
+  font-family: 'Geo', sans-serif;
+  animation: revealMaze 3000ms ease-in-out forwards 200ms;
+  @keyframes revealMaze {
+    80% {
+      color: $shadeMin;
+      font-size: 20vw;
+    }
+    100% {
+      color: $secondary;
+      font-size: 15vw;
+    }
+  }
+}
+.logo-animated,
+.btn-options_wrapper {
+
+}
+blockquote {
+  color: $shade20;
+  font-size: 2rem;
+  font-family: 'Geo', sans-serif;
+  opacity: 0;
+  letter-spacing: 5rem;
+  position: relative;
+  animation: revealCaption 1000ms ease-in-out forwards 200ms;
+  animation-delay: 3000ms;
+  white-space: nowrap;
+  @keyframes revealCaption {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      letter-spacing: 1px;
+    }
+  }
+}
+.btn-options_wrapper {
+  position: relative;
+  margin-top: 10rem;
+  opacity: 0;
+  animation: revealButtons 1000ms ease-in-out forwards 200ms;
+  animation-delay: 3000ms;
+  @keyframes revealButtons {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      margin-top: 2rem;
+      opacity: 1;
+    }
+  }
+}
+
+.btn-option {
+  display: flex;
+  width: 100%;
+}
+
+.btn-options-row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-options-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
