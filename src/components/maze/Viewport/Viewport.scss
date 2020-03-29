@@ -8,3 +8,39 @@
   background: #666;
   position: relative;
 }
+
+.mobile-controls-up,
+.mobile-controls-right,
+.mobile-controls-down,
+.mobile-controls-left {
+  position: absolute;
+  z-index: 100;
+  background: rgba(0,0,0,0.1);
+  width: 100%;
+  height: 100%;
+}
+
+.mobile-controls-up {
+  top: 0;
+  left: 0;
+  right: 0;
+  clip-path: polygon(0 0, 50% 50%, 100% 0);
+}
+.mobile-controls-right {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  clip-path: polygon(50% 50%, 100% 100%, 100% 0%);
+}
+.mobile-controls-down {
+  left: 0;
+  bottom: 0;
+  right: 0;
+  clip-path: polygon(50% 50%, 0 100%, 100% 100%);
+}
+.mobile-controls-left {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  clip-path: polygon(0 100%, 0 0, 50% 50%);
+}
