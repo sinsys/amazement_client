@@ -41,8 +41,8 @@ const Maze = () => {
   return (
     <canvas
       ref={mazeCanvasRef}
-      width={mazeContext.state.scale * 15}
-      height={mazeContext.state.scale * 15}
+      width={mazeContext.state.scale * mazeContext.state.size}
+      height={mazeContext.state.scale * mazeContext.state.size}
       style={{
         left: mazeContext.state.mazePosition[0],
         top: mazeContext.state.mazePosition[1]

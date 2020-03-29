@@ -7,6 +7,8 @@ import { MazeContextProvider } from 'contexts/MazeContext';
 
 // Views
 import Home from 'components/views/Home/Home';
+import Landing from 'components/views/Landing/Landing.js'
+import Options from 'components/views/Options/Options';
 import Game from 'components/views/Game/Game';
 
 // Files
@@ -21,6 +23,14 @@ function App() {
           <Route
             exact path={'/'}
             component={Home}
+          />
+          <Route
+            exact path={'/landing'}
+            component={Landing}
+          />
+          <Route
+            exact path={'/options'}
+            component={Options}
           />
           <Route
             exact path={'/game'}

@@ -5,7 +5,7 @@ import React, {
 } from "react";
 
 // Utilities / Helpers
-import { createMazeObj } from 'utils/maze-utility';
+import { createMazeObj, checkWin } from 'utils/maze-utility';
 
 // Create our context
 let MazeContext = createContext();
@@ -13,7 +13,7 @@ let MazeContext = createContext();
 // Set default values
 let initialState = {
   scale: 0,
-  size: 15,
+  size: 10,
   active: false,
   maze: [],
   playerPosition: [],
@@ -21,7 +21,8 @@ let initialState = {
   winCoords: [],
   difficulty: "",
   spritePosition: [0,0],
-  activeCell: []
+  activeCell: [],
+  won: false
 };
 
 // Reducer to set specific state update commands
@@ -31,12 +32,12 @@ let reducer = (state, action) => {
     // Logs the user in. Updates state about the user
     case "create-maze":
       /* Expects payload of: {
+        active: true,
+        scale: float,
         size: int,
-        active: bool,
-        difficulty: string
-        mazePosition: [x,y]
-        scale: float
-      } */
+        mazePosition: [x, y] coordinates in px for maze to offset maze display to 0, 0
+        difficulty: string,
+        maze_id: uuid() */
       return {
         ...state,
         scale: payload.scale,
@@ -44,10 +45,12 @@ let reducer = (state, action) => {
         size: payload.size,
         playerPosition: [0,0], // [Row, Column]
         mazePosition: [payload.mazePosition[0], payload.mazePosition[1]], // [x, y]
-        winCoords: [payload.size, payload.size],
+        winCoords: [payload.size - 1, payload.size - 1],
         maze: createMazeObj(payload.size, payload.size),
         difficulty: payload.difficulty,
-        spritePosition: [payload.mazePosition[0]-(payload.scale / 2), payload.mazePosition[1] - (payload.scale / 2)]
+        spritePosition: [payload.mazePosition[0]-(payload.scale / 2), payload.mazePosition[1] - (payload.scale / 2)],
+        uuid: payload.uuid,
+        won: false
       };
     case "set-active-cell":
       return {
@@ -57,26 +60,42 @@ let reducer = (state, action) => {
     case "move-up":
       return {
         ...state,
-        playerPosition: [state.playerPosition[0]-1, state.playerPosition[1]],
-        mazePosition: [state.mazePosition[0], state.mazePosition[1] + state.scale]
+        playerPosition: [state.playerPosition[0] - 1, state.playerPosition[1]],
+        mazePosition: [state.mazePosition[0], state.mazePosition[1] + state.scale],
+        won: checkWin(
+          [ state.playerPosition[0] - 1, state.playerPosition[1] ],
+          state.winCoords
+        )
       };
     case "move-right":
       return {
         ...state,
-        playerPosition: [state.playerPosition[0], state.playerPosition[1]+1],
-        mazePosition: [state.mazePosition[0] - state.scale, state.mazePosition[1]]
+        playerPosition: [state.playerPosition[0], state.playerPosition[1] + 1],
+        mazePosition: [state.mazePosition[0] - state.scale, state.mazePosition[1]],
+        won: checkWin(
+          [ state.playerPosition[0], state.playerPosition[1] + 1 ],
+          state.winCoords
+        )
       };
     case "move-down":
       return {
         ...state,
-        playerPosition: [state.playerPosition[0]+1, state.playerPosition[1]],
-        mazePosition: [state.mazePosition[0], state.mazePosition[1] - state.scale]
+        playerPosition: [state.playerPosition[0] + 1, state.playerPosition[1]],
+        mazePosition: [state.mazePosition[0], state.mazePosition[1] - state.scale],
+        won: checkWin(
+          [ state.playerPosition[0] + 1, state.playerPosition[1] ],
+          state.winCoords
+        )
       }
     case "move-left":
       return {
         ...state,
-        playerPosition: [state.playerPosition[0], state.playerPosition[1]-1],
-        mazePosition: [state.mazePosition[0] + state.scale, state.mazePosition[1]]
+        playerPosition: [state.playerPosition[0], state.playerPosition[1] - 1],
+        mazePosition: [state.mazePosition[0] + state.scale, state.mazePosition[1]],
+        won: checkWin(
+          [ state.playerPosition[0], state.playerPosition[1] - 1 ],
+          state.winCoords
+        )
       }
     default:
       return initialState

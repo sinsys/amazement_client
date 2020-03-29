@@ -43,6 +43,9 @@ const Viewport = () => {
 
   // Ensure a maze is created
   if ( state.active ) {
+    if ( state.won ) {
+      setTimeout(() => alert('YOU WIN!'), 300);
+    }
     // Get our active cell (we will need this for collision detection)
     let cell = state.maze[ state.playerPosition[0] ][ state.playerPosition[1] ];
     
@@ -50,33 +53,33 @@ const Viewport = () => {
     /* Check goes as follows:
      - If the keyboard key is pressed
      - If it is a valid move (not out of bounds or colliding with a wall)
-     - If we aren't already moving */
+     - Make sure we aren't moving - movement dispatches overflow without debounce */
     if ( inputs.inputUp ) {
       if ( validMove(cell, 'up') ) {
         if ( !moving ) { 
-          handleMove();
           dispatch({ type: 'move-up' });
+          handleMove();
         }
       };
     } else if ( inputs.inputRight ) {
       if ( validMove(cell, 'right') ) {
         if ( !moving ) { 
-          handleMove();
           dispatch({ type: 'move-right' });
+          handleMove();
         }
       };
     } else if ( inputs.inputDown ) {
       if ( validMove(cell, 'down') ) {
         if ( !moving ) { 
-          handleMove();
           dispatch({ type: 'move-down' });
+          handleMove();
         }
       };
     } else if ( inputs.inputLeft ) {
       if ( validMove(cell, 'left') ) {
         if ( !moving ) { 
-          handleMove();
           dispatch({ type: 'move-left' });
+          handleMove();
         }
       };
     };

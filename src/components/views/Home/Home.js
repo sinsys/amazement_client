@@ -20,24 +20,23 @@ const Landing = () => {
         <span className="maze-highlight">MAZE</span>
         ment
       </div>
-      <blockquote className="app-description">
+      <blockquote className="logo-caption">
         A timed mazerunner game
       </blockquote>
 
       <section className="btn-options_wrapper">
-        <div className="btn-option">
-          <Button
-            id="launch-btn"
-            className="launch-btn draw-border-launch btn"
-            type="button"
-            name="launch-btn"
-            text="Launch"
-            onClick={() => {
-              console.log('clicked');
-            }}
-          />
-        </div>
+
         <div className="btn-options-row">
+          <Button
+              id="launch-btn"
+              className="launch-btn draw-border-launch btn"
+              type="button"
+              name="launch-btn"
+              text="Launch"
+              onClick={() => {
+                history.push('/options')
+              }}
+            />
           <Button
               id="login-btn"
               className="login-btn draw-border-login btn"
@@ -45,7 +44,7 @@ const Landing = () => {
               name="login-btn"
               text="Log In"
               onClick={() => {
-                console.log('clicked');
+                history.push('/login');
               }}
             />    
           <Button
@@ -55,7 +54,7 @@ const Landing = () => {
             name="signup-btn"
             text="Sign Up"
             onClick={() => {
-              console.log('clicked');
+              history.push('/signup')
             }}
           />
         </div>

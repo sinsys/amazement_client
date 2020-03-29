@@ -49,8 +49,8 @@ const Sprite = () => {
     // />
     <canvas
       ref={spriteCanvasRef}
-      width={mazeContext.state.scale * mazeContext.state.size}
-      height={mazeContext.state.scale * mazeContext.state.size}
+      width={mazeContext.state.scale * 15}
+      height={mazeContext.state.scale * 15}
       id="sprite-canvas"
     />
 
