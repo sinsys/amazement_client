@@ -29,6 +29,7 @@ const Landing = () => {
       </div>
 
       <div className="app-description">
+        <h2>Description</h2>
         <p>aMAZEment is a maze runner style game where you have to navigate through a randomly generated maze as quickly as possible. Your run will be timed and will be shown when you complete the maze.</p>
         <p>There is one catch... you cannot see the entire maze! You will be limited to a reduced viewport of the maze and must traverse it to win. But don't worry; any tiles you have already stepped on will be marked so that you don't repeat yourself.</p>
       </div>
@@ -37,13 +38,19 @@ const Landing = () => {
         <h2>Objectives</h2>
         <ul className="objectives-list">
           <li>Get to the bottom right side of the maze</li>
-          <li>Collect the trophy<img src={trophy} className="trophy" alt="trophy" /></li>
+          <li><span>Collect the trophy</span><img src={trophy} className="trophy" alt="trophy" /></li>
         </ul>
+      </div>
+
+      <div className="app-considerations">
+        <h2>Considerations</h2>
+        <p>If on mobile, this app is designed to run in portrait mode. It should work on landscape but is not recommended.</p>
+        <p>There is currently no server functionality. Sign up, log in, and recording scores are not developed yet.</p>
       </div>
 
       <div className="app-controls">
         <h2>Controls</h2>
-        <p>Desktop users use the arrow kews on your keyboard:</p>
+        <p>Desktop users use the arrow keys on your keyboard:</p>
         <ul className="keyboard-keys-list">
           <li>
             <img src={keyUp} alt="keyboard-up" />
