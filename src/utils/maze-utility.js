@@ -117,13 +117,27 @@ const checkWin = (playerPos, winPos) => {
 // Draw the maze on canvas
 const drawMaze = (maze, scale, ctx, canvas) => {
   // Set the background
-  ctx.fillStyle = "#CCC";
+  ctx.fillStyle = "#131313";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.lineWidth = 6;
+
+  // Insert trophy on win cell
+  let trophyImg = new Image();
+  trophyImg.src = require('../assets/images/trophy.svg');
+  trophyImg.onload = () => {
+    ctx.globalAlpha = 1;
+    ctx.drawImage(trophyImg, scale * maze[0].length - scale, scale * maze.length - scale, scale, scale);
+  };
+
   // Map over our maze and draw our boundaries
   maze.forEach((row, y) => {
     row.forEach((cell, x) => {
       cell.forEach((edge, e) => {
+        // $primary: #5D98E8;
+        // $secondary: #FFFB87;
+        // $success: #82E82E;
+        // $error: #EB5550;
+        ctx.strokeStyle = "#9ED466";
         ctx.beginPath();
         if ( !edge ){
           switch (e) {

@@ -53,58 +53,57 @@ const Viewport = () => {
   };
 
   useEffect(() => {
-
-  // Need to implement further. Basic test to display when player wins
-  if ( state.won ) {
-    dispatch({ type: 'end-game' });
-    history.push('/options');
-  };
-
-
-  // Ensure a maze is created
-  if ( state.active ) {
-
-    // Get our active cell (we will need this for collision detection)
-    let cell = state.maze[ state.playerPosition[0] ][ state.playerPosition[1] ];
-    
-    // Handle inputs from the user
-    /* Check goes as follows:
-     - If the keyboard key is pressed
-     - If it is a valid move (not out of bounds or colliding with a wall)
-     - Make sure we aren't moving - movement dispatches overflow without debounce */
-
-    if ( keyboard.inputUp || touch.up ) {
-      if ( validMove(cell, 'up') ) {
-        if ( !moving ) { 
-          dispatch({ type: 'move-up' });
-          handleMove();
-        }
-      };
-    } else if ( keyboard.inputRight || touch.right ) {
-      if ( validMove(cell, 'right') ) {
-        if ( !moving ) { 
-          dispatch({ type: 'move-right' });
-          handleMove();
-        }
-      };
-    } else if ( keyboard.inputDown || touch.down ) {
-      if ( validMove(cell, 'down') ) {
-        if ( !moving ) { 
-          dispatch({ type: 'move-down' });
-          handleMove();
-        }
-      };
-    } else if ( keyboard.inputLeft || touch.left ) {
-      if ( validMove(cell, 'left') ) {
-        if ( !moving ) { 
-          dispatch({ type: 'move-left' });
-          handleMove();
-        }
-      };
+    let mounted = true;
+    // Need to implement further. Basic test to display when player wins
+    if ( state.won && mounted) {
+      dispatch({ type: 'end-game' });
+      history.push('/options');
     };
 
-  }
 
+    // Ensure a maze is created
+    if ( state.active && mounted ) {
+
+      // Get our active cell (we will need this for collision detection)
+      let cell = state.maze[ state.playerPosition[0] ][ state.playerPosition[1] ];
+      
+      // Handle inputs from the user
+      /* Check goes as follows:
+      - If the keyboard key is pressed
+      - If it is a valid move (not out of bounds or colliding with a wall)
+      - Make sure we aren't moving - movement dispatches overflow without debounce */
+
+      if ( keyboard.inputUp || touch.up ) {
+        if ( validMove(cell, 'up') ) {
+          if ( !moving ) { 
+            dispatch({ type: 'move-up' });
+            handleMove();
+          }
+        };
+      } else if ( keyboard.inputRight || touch.right ) {
+        if ( validMove(cell, 'right') ) {
+          if ( !moving ) { 
+            dispatch({ type: 'move-right' });
+            handleMove();
+          }
+        };
+      } else if ( keyboard.inputDown || touch.down ) {
+        if ( validMove(cell, 'down') ) {
+          if ( !moving ) { 
+            dispatch({ type: 'move-down' });
+            handleMove();
+          }
+        };
+      } else if ( keyboard.inputLeft || touch.left ) {
+        if ( validMove(cell, 'left') ) {
+          if ( !moving ) { 
+            dispatch({ type: 'move-left' });
+            handleMove();
+          }
+        };
+      };
+    }
+    return () => mounted = false;
   // eslint-disable-next-line
   },[state.playerPosition, state.won, keyboard, touch]);
 
@@ -113,21 +112,22 @@ const Viewport = () => {
     <section className="Viewport_wrapper">
       {/* Need to put the mobile controls into a component and clean up the DRY touch mangement */}
       <div 
-        className="mobile-controls-up" 
+        className={`mobile-controls-up ${touch.up ? 'active' : ''}`} 
         onTouchStart={(e)=> setTouch({ up: true, right: false, down: false, left: false })}
         onTouchEnd={(e) => setTouch({ up: false, right: false, down: false, left: false })}
       />
       <div 
-        className="mobile-controls-right"
+        className={`mobile-controls-right ${touch.right ? 'active' : ''}`} 
         onTouchStart={(e)=> setTouch({ up: false, right: true, down: false, left: false })}
         onTouchEnd={(e) => setTouch({ up: false, right: false, down: false, left: false })}
       />
       <div 
-        className="mobile-controls-down"
+        className={`mobile-controls-down ${touch.down ? 'active' : ''}`} 
         onTouchStart={(e)=> setTouch({ up: false, right: false, down: true, left: false })}
         onTouchEnd={(e) => setTouch({ up: false, right: false, down: false, left: false })}
       />
-      <div className="mobile-controls-left"
+      <div 
+        className={`mobile-controls-left ${touch.left ? 'active' : ''}`} 
         onTouchStart={(e)=> setTouch({ up: false, right: false, down: false, left: true })}
         onTouchEnd={(e) => setTouch({ up: false, right: false, down: false, left: false })} 
       />
