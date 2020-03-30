@@ -8,25 +8,25 @@
 }
 
 .app-description,
+.app-considerations,
 .app-objectives,
 .app-controls {
   font-family: 'Geo', sans-serif;
   font-size: 1.5rem;
   padding: 1rem;
-  text-align: center;
+  text-align: left;
+  width: 100%;
+  max-width: 960px;
 }
 
-.app-description p {
+.app-description p,
+.app-considerations p {
   margin: 1rem 0;
   max-width: 960px;
 }
 .logo {
   display: flex;
   align-items: center;
-  background: 50% 100% / 50% 50% no-repeat
-              radial-gradient(ellipse at bottom, $shadeMin, transparent, transparent);
-  -webkit-background-clip: text;
-  background-clip: text;
   color: $primary;
   font-size: 10vw;
   margin-top: 2rem;
@@ -42,16 +42,18 @@
 .app-description,
 .app-controls,
 .app-objectives {
-  background: rgba(0,0,0,0.5);
+
 }
 .Landing_wrapper h2 {
   font-size: 2rem;
+  padding-bottom: 0.5rem;
+  color: $secondary;
 }
 .objectives-list {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
   max-width: 960px;
@@ -96,7 +98,7 @@
 
 .trophy {
   max-width: 3rem;
-  margin: 0 auto;
+  margin: 0 1rem;
 }
 @media all and (min-width: 720px) {
   .logo {

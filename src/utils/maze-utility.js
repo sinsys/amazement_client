@@ -137,7 +137,7 @@ const drawMaze = (maze, scale, ctx, canvas) => {
         // $secondary: #FFFB87;
         // $success: #82E82E;
         // $error: #EB5550;
-        ctx.strokeStyle = "#9ED466";
+        ctx.strokeStyle = "#00fff7";
         ctx.beginPath();
         if ( !edge ){
           switch (e) {
@@ -171,7 +171,7 @@ const drawMaze = (maze, scale, ctx, canvas) => {
 
 const markPathVisited = (row, col, scale, ctx) => {
   ctx.globalAlpha = 0.25;
-  ctx.fillStyle = "#5D98E8"
+  ctx.fillStyle = "#FEFEFE"
   ctx.fillRect(scale * col, scale * row, scale, scale);
 };
 
