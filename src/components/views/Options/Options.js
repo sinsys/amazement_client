@@ -1,5 +1,5 @@
 // Canvas Component - Maze Canvas
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 // Contexts / Hooks
@@ -20,7 +20,7 @@ const Options = () => {
   const history = useHistory();
 
   // Establish our Maze context
-  const mazeContext = useContext(MazeContext);
+  const { state, dispatch } = useContext(MazeContext);
 
   // Setup a new maze
   const createMaze = (size) => {
@@ -31,7 +31,7 @@ const Options = () => {
 
     let mazePosition = [((scale * 15) / 2 - (scale / 2)), ((scale * 15) / 2 - (scale / 2))];
 
-    mazeContext.dispatch({
+    dispatch({
       type: 'create-maze',
       payload: {
         active: true,
@@ -45,6 +45,15 @@ const Options = () => {
 
   };
 
+  useEffect(() => {
+
+    if ( state.timeStart && state.timeEnd ) {
+      alert( `You won in ${(state.timeEnd.getTime() - state.timeStart.getTime()) / 1000} seconds.`);
+      dispatch({ type: 'reset-game' });
+    }    
+  
+    // eslint-disable-next-line
+    },[]);
   return (
     <div className="Main Options_wrapper">
 
@@ -52,28 +61,28 @@ const Options = () => {
 
       <div className="btn-options-row">
         <Button
-            id="easy-btn"
-            className="easy-btn draw-border-easy btn"
-            type="button"
-            name="easy-btn"
-            text="Easy"
-            onClick={() => {
-              // history.push('/options')
-              createMaze(15);
-              history.push('/game');
-            }}
-          />
+          id="easy-btn"
+          className="easy-btn draw-border-easy btn"
+          type="button"
+          name="easy-btn"
+          text="Easy"
+          onClick={() => {
+            // history.push('/options')
+            createMaze(15);
+            history.push('/game');
+          }}
+        />
         <Button
-            id="medium-btn"
-            className="medium-btn draw-border-medium btn"
-            type="button"
-            name="medium-btn"
-            text="Medium"
-            onClick={() => {
-              createMaze(20);
-              history.push('/game');
-            }}
-          />    
+          id="medium-btn"
+          className="medium-btn draw-border-medium btn"
+          type="button"
+          name="medium-btn"
+          text="Medium"
+          onClick={() => {
+            createMaze(20);
+            history.push('/game');
+          }}
+        />    
         <Button
           id="hard-btn"
           className="hard-btn draw-border-hard btn"

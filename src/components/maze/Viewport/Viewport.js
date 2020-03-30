@@ -1,5 +1,6 @@
 // Scaffolding Component - Header
 import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 // Contexts / Hooks
 import { MazeContext } from 'contexts/MazeContext';
@@ -16,6 +17,8 @@ import Sprite from 'components/maze/Sprite/Sprite';
 import './Viewport.scss';
 
 const Viewport = () => {
+
+  const history = useHistory();
 
   // Initializes our input context
   const { state, dispatch } = useContext(MazeContext);
@@ -54,20 +57,12 @@ const Viewport = () => {
   // Need to implement further. Basic test to display when player wins
   if ( state.won ) {
     dispatch({ type: 'end-game' });
+    history.push('/options');
   };
 
-  if ( state.won && state.timeStart && state.timeEnd ) {
-    
-    setTimeout(() => {
-      alert( `You won in ${(state.timeEnd.getTime() - state.timeStart.getTime()) / 1000} seconds.`)
-    }, 300);
-  }
+
   // Ensure a maze is created
   if ( state.active ) {
-
-
-
-
 
     // Get our active cell (we will need this for collision detection)
     let cell = state.maze[ state.playerPosition[0] ][ state.playerPosition[1] ];
@@ -137,7 +132,7 @@ const Viewport = () => {
         onTouchEnd={(e) => setTouch({ up: false, right: false, down: false, left: false })} 
       />
       <Maze />
-      <Sprite />
+      <Sprite touchDir={touch} />
     </section>
 
   );

@@ -69,6 +69,10 @@ let reducer = (state, action) => {
         active: false,
         timeEnd: new Date()
       }
+    case "reset-game":
+      return {
+        ...initialState
+      }
     case "move-up":
       return {
         ...state,
