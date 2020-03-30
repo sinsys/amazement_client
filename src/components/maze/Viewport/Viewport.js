@@ -6,7 +6,7 @@ import { MazeContext } from 'contexts/MazeContext';
 import { useKeyPress } from 'hooks/Keyboard';
 
 // Utilities / Helpers
-import { validMove } from 'utils/maze-utility';
+import { validMove, markPathVisited } from 'utils/maze-utility';
 
 // Components 
 import Maze from 'components/maze/Maze/Maze';
@@ -49,23 +49,16 @@ const Viewport = () => {
     }, 300);
   };
 
-  const handleMobileMove = (dir) => {
-    if ( validMove(state.maze[ state.playerPosition[0] ][ state.playerPosition[1] ], dir) ) {
-      if ( !moving ) { 
-        dispatch({ type: `move-${dir}` });
-        handleMove();
-      }
-    };
-  };
-
   useEffect(() => {
-
 
   // Ensure a maze is created
   if ( state.active ) {
+
+    // Need to implement further. Basic test to display when player wins
     if ( state.won ) {
       setTimeout(() => alert('YOU WIN!'), 300);
-    }
+    };
+
     // Get our active cell (we will need this for collision detection)
     let cell = state.maze[ state.playerPosition[0] ][ state.playerPosition[1] ];
     

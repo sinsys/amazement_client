@@ -5,7 +5,7 @@ import React, { useContext, useEffect } from 'react';
 import { MazeContext } from 'contexts/MazeContext';
 
 // Utilities / Helpers
-import { drawMaze } from 'utils/maze-utility';
+import { drawMaze, markPathVisited } from 'utils/maze-utility';
 
 // Files
 import './Maze.scss';
@@ -13,7 +13,7 @@ import './Maze.scss';
 const Maze = () => {
 
   // Establish our maze context
-  const mazeContext = useContext(MazeContext);
+  const { state, dispatch } = useContext(MazeContext);
 
   // Reference to our canvas to draw on
   const mazeCanvasRef = React.useRef(null);
@@ -21,31 +21,56 @@ const Maze = () => {
   useEffect(() => {
 
     // Ensure our maze is created
-    if (mazeContext.state.active){
+    if (state.active){
 
       // Set our reference to the canvas
       const canvas = mazeCanvasRef.current;
       // Setup canvas context
       const ctx = canvas.getContext('2d');
       // Setup individual cell scale
-      const scale = mazeContext.state.scale;
+      const scale = state.scale;
       // Set our maze array
-      const maze = mazeContext.state.maze;
+      const maze = state.maze;
 
       drawMaze(maze, scale, ctx, canvas);
+      // markPathVisited(1, 1, maze, scale, ctx, canvas);
+      // ctx.globalAlpha = 1;
+      // ctx.fillStyle = "#5D98E8"
+      // ctx.fillRect(state.scale, state.scale, state.scale, state.scale);
 
+      markPathVisited(0,0,scale,ctx);
     }
   // eslint-disable-next-line
-  }, [mazeContext.state.active]);
+  }, [state.active]);
 
+  useEffect(() => {
+
+    // Ensure our maze is created
+    if (state.active){
+
+      // Set our reference to the canvas
+      const canvas = mazeCanvasRef.current;
+      // Setup canvas context
+      const ctx = canvas.getContext('2d');
+      // Setup individual cell scale
+      const scale = state.scale;
+      // Set our maze array
+      const maze = state.maze;
+
+      let lastVisitedPosition = state.playerPath[state.playerPath.length - 1];
+
+      markPathVisited(lastVisitedPosition[0], lastVisitedPosition[1],scale,ctx);
+    }
+  // eslint-disable-next-line
+  }, [state.playerPath]);
   return (
     <canvas
       ref={mazeCanvasRef}
-      width={mazeContext.state.scale * mazeContext.state.size}
-      height={mazeContext.state.scale * mazeContext.state.size}
+      width={state.scale * state.size}
+      height={state.scale * state.size}
       style={{
-        left: mazeContext.state.mazePosition[0],
-        top: mazeContext.state.mazePosition[1]
+        left: state.mazePosition[0],
+        top: state.mazePosition[1]
       }}
       id="maze-canvas"
     />
