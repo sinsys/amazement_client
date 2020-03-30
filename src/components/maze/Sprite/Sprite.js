@@ -46,7 +46,8 @@ const Sprite = () => {
         id="sprite-canvas"
         style={{
           marginBottom: mazeContext.state.scale,
-          width: mazeContext.state.scale
+          width: mazeContext.state.scale,
+          height: mazeContext.state.scale * 1.5
         }}
         alt="character-sprite"
       />
