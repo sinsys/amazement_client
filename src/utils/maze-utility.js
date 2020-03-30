@@ -137,7 +137,7 @@ const drawMaze = (maze, scale, ctx, canvas) => {
         // $secondary: #FFFB87;
         // $success: #82E82E;
         // $error: #EB5550;
-        ctx.strokeStyle = "#5D98E8";
+        ctx.strokeStyle = "#00fff7";
         ctx.beginPath();
         if ( !edge ){
           switch (e) {
