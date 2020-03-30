@@ -17,7 +17,7 @@
     "react-fontawesome": "^1.7.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
-    "react-uuid": "^1.0.2"
+    "uuid": "^7.0.2"
   },
   "devDependencies": {
     "node-sass": "^4.13.1",

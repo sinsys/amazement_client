@@ -11,48 +11,53 @@ import walkDown from 'assets/images/sprites/sprite_down.gif';
 const Sprite = () => {
 
   const mazeContext = useContext(MazeContext);
-  const spriteCanvasRef = React.useRef(null);
+  // const spriteCanvasRef = React.useRef(null);
+
+
+
   useEffect(() => {
 
     if (mazeContext.state.active){
 
-      const canvas = spriteCanvasRef.current;
+      // const canvas = spriteCanvasRef.current;
       
-      const ctx = canvas.getContext('2d');
-      const scale = mazeContext.state.scale;
+      // const ctx = canvas.getContext('2d');
+      // const scale = mazeContext.state.scale;
 
-      const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2;
-      const radius = scale / 3;
+      // const centerX = canvas.width / 2;
+      // const centerY = canvas.height / 2;
+      // const radius = scale / 3;
 
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-      ctx.fillStyle = 'green';
-      ctx.fill();
-      ctx.lineWidth = 6;
-      ctx.strokeStyle = '#003300';
-      ctx.stroke();
+      // ctx.beginPath();
+      // ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+      // ctx.fillStyle = 'green';
+      // ctx.fill();
+      // ctx.lineWidth = 6;
+      // ctx.strokeStyle = '#003300';
+      // ctx.stroke();
     }
   // eslint-disable-next-line
   }, [mazeContext.state.active]);
 
   return (
+    <div className="Sprite_wrapper">
+      <img 
+        src={walkDown} 
+        id="sprite-canvas"
+        style={{
+          marginBottom: mazeContext.state.scale,
+          width: mazeContext.state.scale
+        }}
+        alt="character-sprite"
+      />
+    </div>
 
-    // <img 
-    //   src={walkDown} 
+    // <canvas
+    //   ref={spriteCanvasRef}
+    //   width={mazeContext.state.scale * 15}
+    //   height={mazeContext.state.scale * 15}
     //   id="sprite-canvas"
-    //   style={{
-    //     left: mazeContext.state.mazePosition[0],
-    //     top: mazeContext.state.mazePosition[1] - mazeContext.state.scale / 2,
-    //     width: mazeContext.state.scale
-    //   }}
     // />
-    <canvas
-      ref={spriteCanvasRef}
-      width={mazeContext.state.scale * 15}
-      height={mazeContext.state.scale * 15}
-      id="sprite-canvas"
-    />
 
   );
 

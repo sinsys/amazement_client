@@ -38,13 +38,15 @@ const Maze = () => {
       // ctx.fillStyle = "#5D98E8"
       // ctx.fillRect(state.scale, state.scale, state.scale, state.scale);
 
-      markPathVisited(0,0,scale,ctx);
     }
   // eslint-disable-next-line
   }, [state.active]);
 
   useEffect(() => {
 
+    if ( state.playerPath.length > 1 && !state.timeStart ) {
+      dispatch({ type: 'start-timer' });
+    }
     // Ensure our maze is created
     if (state.active){
 
@@ -54,8 +56,6 @@ const Maze = () => {
       const ctx = canvas.getContext('2d');
       // Setup individual cell scale
       const scale = state.scale;
-      // Set our maze array
-      const maze = state.maze;
 
       let lastVisitedPosition = state.playerPath[state.playerPath.length - 1];
 
