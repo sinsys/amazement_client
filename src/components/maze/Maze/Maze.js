@@ -46,9 +46,10 @@ const Maze = () => {
 
     if ( state.playerPath.length > 1 && !state.timeStart ) {
       dispatch({ type: 'start-timer' });
+      
     }
     // Ensure our maze is created
-    if (state.active){
+    if (state.active && state.playerPath.length > 0){
 
       // Set our reference to the canvas
       const canvas = mazeCanvasRef.current;
@@ -59,7 +60,8 @@ const Maze = () => {
 
       let lastVisitedPosition = state.playerPath[state.playerPath.length - 1];
 
-      markPathVisited(lastVisitedPosition[0], lastVisitedPosition[1],scale,ctx);
+      markPathVisited(lastVisitedPosition[0], lastVisitedPosition[1], scale, ctx);
+      
     }
   // eslint-disable-next-line
   }, [state.playerPath]);

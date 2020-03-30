@@ -23,7 +23,7 @@ let initialState = {
   spritePosition: [0,0],
   activeCell: [],
   won: false,
-  playerPath: [[0,0]]
+  playerPath: []
 };
 
 // Reducer to set specific state update commands
@@ -51,6 +51,7 @@ let reducer = (state, action) => {
         difficulty: payload.difficulty,
         spritePosition: [payload.mazePosition[0]-(payload.scale / 2), payload.mazePosition[1] - (payload.scale / 2)],
         uuid: payload.uuid,
+        playerPath: [],
         won: false
       };
     case "set-active-cell":

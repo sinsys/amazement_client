@@ -22,11 +22,11 @@ function App() {
         <Switch>
           <Route
             exact path={'/'}
-            component={Home}
+            component={Landing}
           />
           <Route
-            exact path={'/landing'}
-            component={Landing}
+            exact path={'/home'}
+            component={Home}
           />
           <Route
             exact path={'/options'}

@@ -1,0 +1,108 @@
+@import 'themes/_dark.scss';
+
+.Landing_wrapper {
+  color: $shadeMin;
+  flex-grow: 1;
+  font-family: 'Geo', sans-serif;
+  font-size: 1.5rem;
+}
+
+.app-description,
+.app-objectives,
+.app-controls {
+  font-family: 'Geo', sans-serif;
+  font-size: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.app-description p {
+  margin: 1rem 0;
+  max-width: 960px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  background: 50% 100% / 50% 50% no-repeat
+              radial-gradient(ellipse at bottom, $shadeMin, transparent, transparent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: $primary;
+  font-size: 10vw;
+  margin-top: 2rem;
+  font-family: 'Inknut Antiqua', serif;
+}
+.maze {
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-family: 'Geo', sans-serif;
+  color: $secondary;
+  font-size: 15vw;
+}
+.app-description,
+.app-controls,
+.app-objectives {
+  background: rgba(0,0,0,0.5);
+}
+.Landing_wrapper h2 {
+  font-size: 2rem;
+}
+.objectives-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 960px;
+  list-style: square outside none;
+}
+.objectives-list li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  list-style: square outside none;
+  padding: 0.5rem;
+}
+.keyboard-keys-list,
+.mobile-controls-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 960px;
+}
+.keyboard-keys-list {
+  justify-content: space-evenly;
+}
+.keyboard-keys-list li {
+  flex-basis: 1;
+}
+.keyboard-keys-list li img {
+  max-width: 3rem;
+  margin: 0.5rem;
+}
+
+.mobile-controls-list {
+  justify-content: center;
+}
+
+.mobile-controls-list li img {
+  width: 90vw;
+  max-width: 16rem;
+  margin: 0.5rem;
+}
+
+.trophy {
+  max-width: 3rem;
+  margin: 0 auto;
+}
+@media all and (min-width: 720px) {
+  .logo {
+    font-size: 5vw;
+  }
+  .maze {
+    font-size: 7.5vw;
+  }
+}

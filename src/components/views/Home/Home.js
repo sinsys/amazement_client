@@ -44,8 +44,9 @@ const Landing = () => {
               name="login-btn"
               text="Log In"
               onClick={() => {
-                history.push('/login');
+                // history.push('/login');
               }}
+              disabled
             />    
           <Button
             id="signup-btn"
@@ -54,8 +55,9 @@ const Landing = () => {
             name="signup-btn"
             text="Sign Up"
             onClick={() => {
-              history.push('/signup')
+              // history.push('/signup')
             }}
+            disabled
           />
         </div>
       </section>
