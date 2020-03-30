@@ -1,5 +1,6 @@
 // Scaffolding Component - Header
 import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 // Contexts / Hooks
 import { MazeContext } from 'contexts/MazeContext';
@@ -16,6 +17,8 @@ import Sprite from 'components/maze/Sprite/Sprite';
 import './Viewport.scss';
 
 const Viewport = () => {
+
+  const history = useHistory();
 
   // Initializes our input context
   const { state, dispatch } = useContext(MazeContext);
@@ -34,7 +37,7 @@ const Viewport = () => {
   const [moving, setMoving] = useState(false);
 
   // These provide Boolean values for when arrow keys are pressed or not
-  const inputs = {
+  const keyboard = {
     inputUp: useKeyPress('ArrowUp'),
     inputRight: useKeyPress('ArrowRight'),
     inputDown: useKeyPress('ArrowDown'),
@@ -49,23 +52,18 @@ const Viewport = () => {
     }, 300);
   };
 
-  const handleMobileMove = (dir) => {
-    if ( validMove(state.maze[ state.playerPosition[0] ][ state.playerPosition[1] ], dir) ) {
-      if ( !moving ) { 
-        dispatch({ type: `move-${dir}` });
-        handleMove();
-      }
-    };
-  };
-
   useEffect(() => {
+
+  // Need to implement further. Basic test to display when player wins
+  if ( state.won ) {
+    dispatch({ type: 'end-game' });
+    history.push('/options');
+  };
 
 
   // Ensure a maze is created
   if ( state.active ) {
-    if ( state.won ) {
-      setTimeout(() => alert('YOU WIN!'), 300);
-    }
+
     // Get our active cell (we will need this for collision detection)
     let cell = state.maze[ state.playerPosition[0] ][ state.playerPosition[1] ];
     
@@ -75,28 +73,28 @@ const Viewport = () => {
      - If it is a valid move (not out of bounds or colliding with a wall)
      - Make sure we aren't moving - movement dispatches overflow without debounce */
 
-    if ( inputs.inputUp || touch.up ) {
+    if ( keyboard.inputUp || touch.up ) {
       if ( validMove(cell, 'up') ) {
         if ( !moving ) { 
           dispatch({ type: 'move-up' });
           handleMove();
         }
       };
-    } else if ( inputs.inputRight || touch.right ) {
+    } else if ( keyboard.inputRight || touch.right ) {
       if ( validMove(cell, 'right') ) {
         if ( !moving ) { 
           dispatch({ type: 'move-right' });
           handleMove();
         }
       };
-    } else if ( inputs.inputDown || touch.down ) {
+    } else if ( keyboard.inputDown || touch.down ) {
       if ( validMove(cell, 'down') ) {
         if ( !moving ) { 
           dispatch({ type: 'move-down' });
           handleMove();
         }
       };
-    } else if ( inputs.inputLeft || touch.left ) {
+    } else if ( keyboard.inputLeft || touch.left ) {
       if ( validMove(cell, 'left') ) {
         if ( !moving ) { 
           dispatch({ type: 'move-left' });
@@ -108,7 +106,7 @@ const Viewport = () => {
   }
 
   // eslint-disable-next-line
-  },[state.playerPosition, inputs, touch]);
+  },[state.playerPosition, state.won, keyboard, touch]);
 
   return (
 
@@ -134,7 +132,7 @@ const Viewport = () => {
         onTouchEnd={(e) => setTouch({ up: false, right: false, down: false, left: false })} 
       />
       <Maze />
-      <Sprite />
+      <Sprite touchDir={touch} />
     </section>
 
   );

@@ -22,7 +22,8 @@ let initialState = {
   difficulty: "",
   spritePosition: [0,0],
   activeCell: [],
-  won: false
+  won: false,
+  playerPath: [[0,0]]
 };
 
 // Reducer to set specific state update commands
@@ -56,6 +57,21 @@ let reducer = (state, action) => {
       return {
         ...state,
         activeCell: state.maze[state.playerPosition[0]][state.playerPosition[1]]
+      };
+    case "start-timer":
+      return {
+        ...state,
+        timeStart: new Date()
+      }
+    case "end-game":
+      return {
+        ...state,
+        active: false,
+        timeEnd: new Date()
+      }
+    case "reset-game":
+      return {
+        ...initialState
       }
     case "move-up":
       return {
@@ -65,7 +81,8 @@ let reducer = (state, action) => {
         won: checkWin(
           [ state.playerPosition[0] - 1, state.playerPosition[1] ],
           state.winCoords
-        )
+        ),
+        playerPath: [...state.playerPath, [state.playerPosition[0] , state.playerPosition[1] ] ]
       };
     case "move-right":
       return {
@@ -75,7 +92,8 @@ let reducer = (state, action) => {
         won: checkWin(
           [ state.playerPosition[0], state.playerPosition[1] + 1 ],
           state.winCoords
-        )
+        ),
+        playerPath: [...state.playerPath, [state.playerPosition[0], state.playerPosition[1] ] ]
       };
     case "move-down":
       return {
@@ -85,7 +103,8 @@ let reducer = (state, action) => {
         won: checkWin(
           [ state.playerPosition[0] + 1, state.playerPosition[1] ],
           state.winCoords
-        )
+        ),
+        playerPath: [...state.playerPath, [state.playerPosition[0], state.playerPosition[1] ] ]
       }
     case "move-left":
       return {
@@ -95,7 +114,8 @@ let reducer = (state, action) => {
         won: checkWin(
           [ state.playerPosition[0], state.playerPosition[1] - 1 ],
           state.winCoords
-        )
+        ),
+        playerPath: [...state.playerPath, [state.playerPosition[0], state.playerPosition[1] ] ]
       }
     default:
       return initialState

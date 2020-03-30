@@ -1,6 +1,5 @@
 // View component - Root page for logged in users
-import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import React from 'react';
 
 // Element Components
 import Button from 'components/elements/Button/Button';
@@ -10,8 +9,6 @@ import 'components/views/views.scss';
 import './Landing.scss';
 
 const Landing = () => {
-
-  const history = useHistory();
 
   return (
     <div className="Main Landing_wrapper">

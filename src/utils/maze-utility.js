@@ -155,9 +155,16 @@ const drawMaze = (maze, scale, ctx, canvas) => {
   });
 };
 
+const markPathVisited = (row, col, scale, ctx) => {
+  ctx.globalAlpha = 0.25;
+  ctx.fillStyle = "#5D98E8"
+  ctx.fillRect(scale * col, scale * row, scale, scale);
+};
+
 module.exports = {
   createMazeObj,
   validMove,
   checkWin,
-  drawMaze
+  drawMaze,
+  markPathVisited
 };
