@@ -5,6 +5,9 @@ import { useHistory } from 'react-router-dom';
 // Contexts / Hooks
 import { MazeContext } from 'contexts/MazeContext';
 
+// Services
+import GamesApiService from 'services/GameService';
+
 // Components 
 import Button from 'components/elements/Button/Button';
 
@@ -23,7 +26,7 @@ const Options = () => {
   const { state, dispatch } = useContext(MazeContext);
 
   // Setup a new maze
-  const createMaze = (size) => {
+  const createMaze = (size, difficulty) => {
 
     let scale = window.innerWidth - window.innerHeight > 0
       ? window.innerHeight / 15 
@@ -37,7 +40,7 @@ const Options = () => {
         scale: scale,
         size: size,
         mazePosition: mazePosition,
-        difficulty: "",
+        difficulty: difficulty,
         uuid: uuidv4()
       }
     });
@@ -46,11 +49,35 @@ const Options = () => {
 
   useEffect(() => {
 
+    if ( !state.active ) {
+      GamesApiService.getGames()
+        .then(res => {
+          console.log(res);
+        });
+    }
+
     if ( state.timeStart && state.timeEnd ) {
-      alert( `You won in ${(state.timeEnd.getTime() - state.timeStart.getTime()) / 1000} seconds.`);
-      dispatch({ type: 'reset-game' });
+
+      const newGame = {
+        uuid: state.uuid,
+        size: state.size,
+        maze: JSON.stringify(state.maze),
+        player_path: JSON.stringify(state.playerPath),
+        time_started: state.timeStart,
+        time_ended: state.timeEnd,
+        user_id: null,
+        user_name: 'SinSys',
+        difficulty: state.difficulty
+      }
+
+      GamesApiService.addGame(newGame)
+        .then(res => {
+          alert( `You won in ${(state.timeEnd.getTime() - state.timeStart.getTime()) / 1000} seconds.`);
+          alert( `Adding your run to our database!`);
+          dispatch({ type: 'reset-game' });
+        });
+
     }    
-  
     // eslint-disable-next-line
     },[]);
   return (
@@ -67,7 +94,7 @@ const Options = () => {
           text="Easy"
           onClick={() => {
             // history.push('/options')
-            createMaze(15);
+            createMaze(15, "easy");
             history.push('/game');
           }}
         />
@@ -78,7 +105,7 @@ const Options = () => {
           name="medium-btn"
           text="Medium"
           onClick={() => {
-            createMaze(20);
+            createMaze(20, "medium");
             history.push('/game');
           }}
         />    
@@ -89,7 +116,7 @@ const Options = () => {
           name="hard-btn"
           text="Hard"
           onClick={() => {
-            createMaze(25);
+            createMaze(25, "hard");
             history.push('/game');
           }}
         />
