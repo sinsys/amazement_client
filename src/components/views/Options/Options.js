@@ -30,7 +30,6 @@ const Options = () => {
       : window.innerWidth / 15;
 
     let mazePosition = [((scale * 15) / 2 - (scale / 2)), ((scale * 15) / 2 - (scale / 2))];
-
     dispatch({
       type: 'create-maze',
       payload: {
@@ -39,7 +38,7 @@ const Options = () => {
         size: size,
         mazePosition: mazePosition,
         difficulty: "",
-        maze_id: uuidv4()
+        uuid: uuidv4()
       }
     });
 

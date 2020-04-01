@@ -34,6 +34,7 @@ There is one catch... you cannot see the entire maze! You will be limited to a r
 - User Stories for use-cases: [User Stories](https://docs.google.com/spreadsheets/d/1G_G0ksrQKUb6JlzIhDMscehSxYiok8L5uuWnNtSqWow/edit#gid=253511204?usp=sharing)
 - Wireframes: [Wireframes Navigator](https://sinsys.github.io/amazement_client/wireframes/index.html)
 - User Flows: [User Flows on Draw.io](https://drive.google.com/file/d/186u-Wz0U53KK0lntC3kkYo8_H7HqwFfp/view?usp=sharing)
+- Feedback (1st Round): [Feedback response in Gist](https://gist.github.com/sinsys/e27cdeb263a5455df61886512cb4ec7b)
 
 ## Requirements
 
