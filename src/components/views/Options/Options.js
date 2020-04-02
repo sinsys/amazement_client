@@ -1,4 +1,4 @@
-// Canvas Component - Maze Canvas
+// View Component - Options page before starting a maze
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -54,32 +54,10 @@ const Options = () => {
         .then(res => {
           console.log(res);
         });
-    }
-
-    if ( state.timeStart && state.timeEnd ) {
-
-      const newGame = {
-        uuid: state.uuid,
-        size: state.size,
-        maze: JSON.stringify(state.maze),
-        player_path: JSON.stringify(state.playerPath),
-        time_started: state.timeStart,
-        time_ended: state.timeEnd,
-        user_id: null,
-        user_name: 'SinSys',
-        difficulty: state.difficulty
-      }
-
-      GamesApiService.addGame(newGame)
-        .then(res => {
-          alert( `You won in ${(state.timeEnd.getTime() - state.timeStart.getTime()) / 1000} seconds.`);
-          alert( `Adding your run to our database!`);
-          dispatch({ type: 'reset-game' });
-        });
-
-    }    
+    } 
     // eslint-disable-next-line
-    },[]);
+  },[]);
+  
   return (
     <div className="Main Options_wrapper">
 

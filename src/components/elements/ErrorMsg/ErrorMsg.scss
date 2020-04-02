@@ -1,0 +1,10 @@
+@import 'themes/_dark.scss';
+
+.form-error-label {
+  color: $error;
+  font-size: 1.5rem;
+  padding: 1rem;
+  svg {
+    margin-right: 0.5rem;
+  }
+}

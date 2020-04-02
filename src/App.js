@@ -10,6 +10,7 @@ import Home from 'components/views/Home/Home';
 import Landing from 'components/views/Landing/Landing.js'
 import Options from 'components/views/Options/Options';
 import Game from 'components/views/Game/Game';
+import Results from 'components/views/Results/Results';
 
 // Files
 import './App.scss';
@@ -35,6 +36,10 @@ function App() {
           <Route
             exact path={'/game'}
             component={Game}
+          />
+          <Route
+            exact path={'/results'}
+            component={Results}
           />
         </Switch>
       </MazeContextProvider>

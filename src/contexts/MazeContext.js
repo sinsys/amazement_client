@@ -52,7 +52,8 @@ let reducer = (state, action) => {
         spritePosition: [payload.mazePosition[0]-(payload.scale / 2), payload.mazePosition[1] - (payload.scale / 2)],
         uuid: payload.uuid,
         playerPath: [],
-        won: false
+        won: false,
+        submitted: false
       };
     case "set-active-cell":
       return {
@@ -117,6 +118,11 @@ let reducer = (state, action) => {
           state.winCoords
         ),
         playerPath: [...state.playerPath, [state.playerPosition[0], state.playerPosition[1] ] ]
+      }
+    case "submit-run":
+      return {
+        ...state,
+        submitted: true
       }
     default:
       return initialState
