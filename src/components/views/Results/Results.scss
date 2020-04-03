@@ -1,0 +1,31 @@
+@import 'themes/_dark.scss';
+
+.Results_wrapper {
+  font-size: 2rem;
+  color: $shadeMin;
+  font-family: 'Geo', sans-serif;
+}
+
+.results-header {
+  font-size: 2rem;
+}
+
+.results-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-transform: capitalize;
+}
+
+#submit-run-form {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+}
+#submit-run-form .btn {
+  margin: 1rem 0;
+}

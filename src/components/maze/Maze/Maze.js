@@ -19,9 +19,10 @@ const Maze = () => {
   const mazeCanvasRef = React.useRef(null);
 
   useEffect(() => {
-
+    
+    let mounted = true;
     // Ensure our maze is created
-    if (state.active){
+    if (state.active && mounted){
 
       // Set our reference to the canvas
       const canvas = mazeCanvasRef.current;
@@ -32,19 +33,16 @@ const Maze = () => {
       // Set our maze array
       const maze = state.maze;
 
-      drawMaze(maze, scale, ctx, canvas);
-      // markPathVisited(1, 1, maze, scale, ctx, canvas);
-      // ctx.globalAlpha = 1;
-      // ctx.fillStyle = "#5D98E8"
-      // ctx.fillRect(state.scale, state.scale, state.scale, state.scale);
+      drawMaze(maze, scale, ctx, canvas, 6);
 
     }
+    return () => mounted = false;
   // eslint-disable-next-line
   }, [state.active]);
 
   useEffect(() => {
-
-    if ( state.playerPath.length > 1 && !state.timeStart ) {
+    let mounted = true;
+    if ( state.playerPath.length > 1 && !state.timeStart && mounted) {
       dispatch({ type: 'start-timer' });
       
     }
@@ -63,6 +61,7 @@ const Maze = () => {
       markPathVisited(lastVisitedPosition[0], lastVisitedPosition[1], scale, ctx);
       
     }
+    return () => mounted = false;
   // eslint-disable-next-line
   }, [state.playerPath]);
   return (

@@ -58,7 +58,7 @@ const Viewport = () => {
     if ( state.won && mounted) {
       dispatch({ type: 'end-game' });
       console.log(state);
-      history.push('/options');
+      history.push('/results');
     };
 
 

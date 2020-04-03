@@ -115,11 +115,11 @@ const checkWin = (playerPos, winPos) => {
 };
 
 // Draw the maze on canvas
-const drawMaze = (maze, scale, ctx, canvas) => {
+const drawMaze = (maze, scale, ctx, canvas, lineWidth) => {
   // Set the background
   ctx.fillStyle = "#131313";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.lineWidth = 6;
+  ctx.lineWidth = lineWidth;
 
   // Insert trophy on win cell
   let trophyImg = new Image();
@@ -175,10 +175,19 @@ const markPathVisited = (row, col, scale, ctx) => {
   ctx.fillRect(scale * col, scale * row, scale, scale);
 };
 
+const drawResultsMaze = (maze, scale, canvas, ctx, playerPath, lineWidth) => {
+  drawMaze(maze, scale, ctx, canvas, lineWidth);
+  playerPath.map(cell => {
+    markPathVisited(cell[0], cell[1], scale, ctx);
+  });
+  markPathVisited(maze.length - 1, maze.length - 1, scale, ctx );
+};
+
 module.exports = {
   createMazeObj,
   validMove,
   checkWin,
   drawMaze,
-  markPathVisited
+  markPathVisited,
+  drawResultsMaze
 };

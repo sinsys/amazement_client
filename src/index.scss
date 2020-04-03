@@ -16,7 +16,7 @@ html, body {
 	background-image: $bg-img;
   background-position: 0px 0px;
   background-repeat: repeat;
-	animation: animatedBackground 20s ease-in-out infinite;
+	animation: animatedBackground 60s ease-in-out infinite;
   @keyframes animatedBackground {
     0% {
       background-position: 0 0;
