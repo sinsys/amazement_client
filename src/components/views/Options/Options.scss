@@ -4,4 +4,72 @@
   font-size: 2rem;
   color: $shadeMin;
   font-family: 'Geo', sans-serif;
+  margin: 1rem 0;
+}
+
+// .scores {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-start;
+//   justify-content: center;
+//   flex-wrap: wrap;
+// }
+.score {
+  color: $shadeMin;
+}
+
+.score-user-name,
+.score-time-taken,
+.score-difficulty {
+  margin: 0.25rem 0.5rem;
+}
+
+table {
+  color: $shadeMin;
+  font-family: 'Geo', sans-serif;
+  width: 90%;
+  max-width: 960px;
+}
+
+th {
+  background: $primary;
+  font-size: 2rem;
+}
+
+td,
+th {
+    padding: 0.5rem;
+}
+
+td {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 0.25rem 0.5rem;
+}
+
+tbody tr:nth-child(even) {
+  background: $shade100;
+}
+
+tbody tr:nth-child(odd) {
+  background: $shadeMax;
+}
+th:first-child {
+  border-radius: 1rem 0 0 0;
+}
+
+th:last-child {
+  border-radius: 0 1rem 0 0;
+}
+
+td:last-child {
+  text-transform: capitalize;
+}
+
+tr:last-child td:first-child {
+  border-radius: 0 0 0 1rem;
+}
+
+tr:last-child td:last-child {
+  border-radius: 0 0 1rem 0;
 }
