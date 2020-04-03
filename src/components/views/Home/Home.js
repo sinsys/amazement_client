@@ -62,7 +62,7 @@ const Landing = () => {
                 history.push('/options')
               }}
             />
-          <Button
+          {/* <Button
               id="login-btn"
               className="login-btn draw-border-login btn"
               type="button"
@@ -83,7 +83,7 @@ const Landing = () => {
               // history.push('/signup')
             }}
             disabled
-          />
+          /> */}
         </div>
       </section>
 
