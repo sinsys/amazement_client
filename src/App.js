@@ -19,9 +19,9 @@ const App = () => {
   const hideAddressBar = () => {
     if( !window.location.hash ) {
       if( document.height < window.outerHeight ) {
-        document.body.style.height = (window.outerHeight + 50) + 'px';
+        document.body.style.height = (window.outerHeight) + 'px';
       }
-      setTimeout( function(){ window.scrollTo(0, 1); }, 50 );
+      setTimeout( function(){ window.scrollTo(0, 1); });
     }
   }
   useEffect(() => {
