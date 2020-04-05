@@ -1,6 +1,5 @@
 // View Component - Options page before starting a maze
 import React, { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 
 // Contexts / Hooks
 import { MazeContext } from 'contexts/MazeContext';
@@ -10,11 +9,10 @@ import './Timer.scss';
 
 const Timer = () => {
 
-  const history = useHistory();
-  let [timer, setTimer] = useState("...Ready");
+  let [timer, setTimer] = useState(["Ready", ""]);
 
   // Establish our Maze context
-  const { state, dispatch } = useContext(MazeContext);
+  const { state } = useContext(MazeContext);
 
   useEffect(() => {
     let interval = null;
@@ -22,7 +20,10 @@ const Timer = () => {
       
       interval = setInterval(() => {
         let timeElapsed = (new Date().getTime() - state.timeStart) / 1000;
-        setTimer(timeElapsed.toFixed(3));
+        let formattedTime = timeElapsed
+          .toFixed(3)
+          .split('.');
+        setTimer(formattedTime);
       }, 107);
     }
     return(() => interval);
@@ -31,7 +32,15 @@ const Timer = () => {
   
   return (
     <div className="Timer_wrapper">
-      <span className="timer">{timer}</span>
+      <span className="timer">
+        {timer[0]}
+        <span className="timer-ms">
+          {timer[1] !== ""
+            ? "." + timer[1]
+            : ""
+          }
+        </span>
+      </span>
     </div>
   );
 };

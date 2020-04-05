@@ -47,6 +47,10 @@ const Results = () => {
     ? window.innerHeight / state.size / 2
     : window.innerWidth / state.size / 2;
 
+  // Check if run was good enough for a high score
+  const checkIfNewScore = (score, difficulty) => {
+
+  }
   // Validates the form to ensure it includes a user name
   const validateSubmitForm = (e) => {
 
@@ -102,7 +106,7 @@ const Results = () => {
       const canvas = resultsCanvasRef.current;
       // Setup canvas context
       const ctx = canvas.getContext('2d');
-      drawResultsMaze(results.maze, scale, canvas, ctx, results.playerPath, 6);
+      drawResultsMaze(results.maze, scale, canvas, ctx, results.playerPath, scale / results.size);
     } else {
       history.push('/options');
     }
@@ -118,7 +122,7 @@ const Results = () => {
         <p>Difficulty: {results.difficulty}</p>
         <p>Time: {(new Date(results.timeEnd).getTime() - new Date(results.timeStart).getTime()) / 1000} seconds</p>
         <form id="submit-run-form" onSubmit={(e) => validateSubmitForm(e)}>
-          <h2>Submit your run</h2>
+          <h2 className="results-header">Submit your run</h2>
           <label htmlFor="user_name">
             Name:
             { errors.user_name 
@@ -132,6 +136,8 @@ const Results = () => {
             type="text"
             id="user_name"
             name="user_name"
+            className="user-name-input"
+            maxLength="20"
             onChange={handleInputChange}
           />
           <Button

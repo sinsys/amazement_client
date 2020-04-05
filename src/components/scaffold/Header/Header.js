@@ -1,10 +1,12 @@
 // Scaffolding Component - Header
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 // Element Components 
 import Button from 'components/elements/Button/Button';
 import Timer from 'components/widgets/Timer/Timer';
+
+import { MazeContext } from 'contexts/MazeContext';
 
 // Files / Images
 import './Header.scss';
@@ -12,6 +14,7 @@ import './Header.scss';
 const Header = () => {
 
   const history = useHistory();
+  const { dispatch } = useContext(MazeContext);
 
   // Toggles header style if user is logged in or not
   return (
@@ -24,7 +27,8 @@ const Header = () => {
           name="back-btn"
           text="&#171;"
           onClick={() => {
-            history.push('/options')
+            dispatch({ value: "reset-game" });
+            history.push('/options');
           }}
         />
       <Timer />

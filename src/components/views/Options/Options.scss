@@ -73,3 +73,9 @@ tr:last-child td:first-child {
 tr:last-child td:last-child {
   border-radius: 0 0 1rem 0;
 }
+
+@media only screen and (max-width: 600px) {
+  th, td {
+    font-size: 1.25rem;
+  }
+}

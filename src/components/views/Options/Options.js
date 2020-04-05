@@ -117,7 +117,14 @@ const Options = () => {
           </tr>
         </thead>
         <tbody>
-          {renderScores(scores)}
+          {state.highScores.fetched
+            ? renderScores(scores)
+            : <tr className="score">
+                <td colSpan="3">
+                  ... Fetching high scores ...
+                </td>
+              </tr>
+          }
         </tbody>
       </table>
 

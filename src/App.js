@@ -15,21 +15,22 @@ import Results from 'components/views/Results/Results';
 // Files
 import './App.scss';
 
-function App() {
+const App = () => {
   const hideAddressBar = () => {
     if( !window.location.hash ) {
-        if( document.height < window.outerHeight ) {
-          document.body.style.height = (window.outerHeight + 50) + 'px';
-        }
+      if( document.height < window.outerHeight ) {
+        document.body.style.height = (window.outerHeight + 50) + 'px';
+      }
       setTimeout( function(){ window.scrollTo(0, 1); }, 50 );
     }
   }
   useEffect(() => {
+    window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddressBar(); } } );
+    window.addEventListener("orientationchange", hideAddressBar );
     hideAddressBar();
     return(() => hideAddressBar);
   }, []);
-  window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddressBar(); } } );
-  window.addEventListener("orientationchange", hideAddressBar );
+
   return (
     <div className="App_wrapper">
       <MazeContextProvider>
