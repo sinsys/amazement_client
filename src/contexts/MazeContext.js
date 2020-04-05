@@ -23,7 +23,15 @@ let initialState = {
   spritePosition: [0,0],
   activeCell: [],
   won: false,
-  playerPath: []
+  playerPath: [],
+  highScores: {
+    fetched: false,
+    highScores: {
+      easy: [],
+      medium: [],
+      hard: []
+    }
+  }
 };
 
 // Reducer to set specific state update commands
@@ -123,6 +131,22 @@ let reducer = (state, action) => {
       return {
         ...state,
         submitted: true
+      }
+    case "fetch-high-scores":
+      return {
+        ...state,
+        highScores: {
+          ...state.highScores,
+          fetched: false
+        }
+      }
+    case "set-high-scores":
+      return {
+        ...state,
+        highScores: {
+          fetched: true,
+          highScores: payload.highScores
+        }
       }
     default:
       return initialState

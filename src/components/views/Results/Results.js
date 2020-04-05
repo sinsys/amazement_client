@@ -63,13 +63,11 @@ const Results = () => {
       );
     } else {
       submitScore(input["user_name"]);
-      history.push('/options');
     }
   };
 
   const submitScore = (playerName) => {
 
-    // Need to implement this on user input to submit the run
     const newGame = {
       uuid: results.uuid,
       size: results.size,
@@ -84,7 +82,11 @@ const Results = () => {
 
     GamesApiService.addGame(newGame)
       .then(res => {
-        alert( `Adding your run to our database!`);
+        alert( `Added your run to our database!`);
+        dispatch({
+          type: ""
+        })
+        history.push('/options');
       })
       .catch(res => {
         if ( res.error === "Game already exists" ) {

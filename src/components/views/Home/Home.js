@@ -1,6 +1,15 @@
 // View component - Root page for logged in users
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+
+// Contexts / Hooks
+import { MazeContext } from 'contexts/MazeContext';
+
+// Services 
+import GamesApiService from 'services/GameService';
+
+// Utilities / Helpers
+import { formatHighScores } from 'utils/scores-utility';
 
 // Element Components
 import Button from 'components/elements/Button/Button';
@@ -12,6 +21,22 @@ import './Home.scss';
 const Landing = () => {
 
   const history = useHistory();
+
+  const { state, dispatch } = useContext(MazeContext);
+
+  useEffect(() => {
+
+    if ( !state.highScores.fetched ) {
+      GamesApiService.getGames()
+        .then(res => {
+          dispatch({
+            type: 'set-high-scores',
+            payload: { highScores: formatHighScores(res) }
+          })
+        });
+    } 
+    // eslint-disable-next-line
+  },[state.highScores.fetched]);
 
   return (
     <div className="Main Home_wrapper">
@@ -37,7 +62,7 @@ const Landing = () => {
                 history.push('/options')
               }}
             />
-          <Button
+          {/* <Button
               id="login-btn"
               className="login-btn draw-border-login btn"
               type="button"
@@ -58,7 +83,7 @@ const Landing = () => {
               // history.push('/signup')
             }}
             disabled
-          />
+          /> */}
         </div>
       </section>
 

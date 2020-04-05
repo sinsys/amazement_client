@@ -45,7 +45,6 @@ const Landing = () => {
       <div className="app-considerations">
         <h2>Considerations</h2>
         <p>If on mobile, this app is designed to run in portrait mode. It should work on landscape but is not recommended.</p>
-        <p>There is currently no server functionality. Sign up, log in, and recording scores are not developed yet.</p>
       </div>
 
       <div className="app-controls">
