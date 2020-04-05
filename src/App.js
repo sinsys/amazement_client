@@ -1,5 +1,5 @@
 // Root App component
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 // Contexts / Hooks
@@ -16,7 +16,20 @@ import Results from 'components/views/Results/Results';
 import './App.scss';
 
 function App() {
-
+  const hideAddressBar = () => {
+    if( !window.location.hash ) {
+        if( document.height < window.outerHeight ) {
+          document.body.style.height = (window.outerHeight + 50) + 'px';
+        }
+      setTimeout( function(){ window.scrollTo(0, 1); }, 50 );
+    }
+  }
+  useEffect(() => {
+    hideAddressBar();
+    return(() => hideAddressBar);
+  }, []);
+  window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddressBar(); } } );
+  window.addEventListener("orientationchange", hideAddressBar );
   return (
     <div className="App_wrapper">
       <MazeContextProvider>
