@@ -24,6 +24,8 @@ const Game = () => {
   useEffect(() => {
     if ( !state.active ) {
       history.push('/options');
+    } else {
+      
     }
     // eslint-disable-next-line
   }, [state.active]);
@@ -32,7 +34,10 @@ const Game = () => {
     <>
       <Header />
       <div className="Main Game_wrapper">
-        <Viewport />
+        <Viewport 
+          style={{
+            // backgroundPosition: "-10vw -10vh"
+          }}/>
       </div>
     </>
   );

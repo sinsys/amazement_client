@@ -57,10 +57,8 @@ const Viewport = () => {
     // Need to implement further. Basic test to display when player wins
     if ( state.won && mounted) {
       dispatch({ type: 'end-game' });
-      console.log(state);
       history.push('/results');
     };
-
 
     // Ensure a maze is created
     if ( state.active && mounted ) {

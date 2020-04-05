@@ -33,7 +33,7 @@ const Maze = () => {
       // Set our maze array
       const maze = state.maze;
 
-      drawMaze(maze, scale, ctx, canvas, 6);
+      drawMaze(maze, scale, ctx, canvas, scale / 10);
 
     }
     return () => mounted = false;
