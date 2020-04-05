@@ -178,7 +178,7 @@ const markPathVisited = (row, col, scale, ctx) => {
 const drawResultsMaze = (maze, scale, canvas, ctx, playerPath, lineWidth) => {
   drawMaze(maze, scale, ctx, canvas, lineWidth);
   playerPath.map(cell => {
-    markPathVisited(cell[0], cell[1], scale, ctx);
+    return markPathVisited(cell[0], cell[1], scale, ctx);
   });
   markPathVisited(maze.length - 1, maze.length - 1, scale, ctx );
 };

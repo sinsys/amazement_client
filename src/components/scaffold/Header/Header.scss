@@ -1,0 +1,13 @@
+.Header_wrapper {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  .draw-border-back-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 75px;
+    font-size: 3rem;
+    padding: 0 0.25rem;
+  }
+}

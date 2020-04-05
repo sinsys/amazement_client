@@ -7,6 +7,7 @@ import { MazeContext } from 'contexts/MazeContext';
 
 // Components 
 import Viewport from 'components/maze/Viewport/Viewport';
+import Header from 'components/scaffold/Header/Header';
 
 // Files
 import '../views.scss';
@@ -24,12 +25,16 @@ const Game = () => {
     if ( !state.active ) {
       history.push('/options');
     }
+    // eslint-disable-next-line
   }, [state.active]);
   
   return (
-    <div className="Main Game_wrapper">
-      <Viewport />
-    </div>
+    <>
+      <Header />
+      <div className="Main Game_wrapper">
+        <Viewport />
+      </div>
+    </>
   );
 };
 

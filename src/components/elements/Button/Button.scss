@@ -83,6 +83,10 @@
   @include btn-border-drawing($shade20, $shade60, 4px, bottom, right);
   color: $shade40;
 }
+.draw-border-back-btn {
+  @include btn-border-drawing($shade80, $secondary, 4px, bottom, right);
+  color: $secondary;
+}
 
 .btn {
   background: none;

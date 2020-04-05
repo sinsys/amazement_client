@@ -83,6 +83,9 @@ const Results = () => {
     GamesApiService.addGame(newGame)
       .then(res => {
         alert( `Added your run to our database!`);
+        dispatch({
+          type: ""
+        })
         history.push('/options');
       })
       .catch(res => {

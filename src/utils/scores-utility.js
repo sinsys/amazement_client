@@ -12,15 +12,12 @@ const formatHighScores = (highScores) => {
   }).map(score => {
     switch(score.difficulty) {
       case "easy":
-        newHighScores.easy.push(score);
-        break;
+        return newHighScores.easy.push(score);
       case "medium":
-        newHighScores.medium.push(score);
-        break;
+        return newHighScores.medium.push(score);
       case "hard":
-        newHighScores.hard.push(score);
-        break;
-      default: return;
+        return newHighScores.hard.push(score);
+      default: return false;
     }
   });
 
