@@ -11,7 +11,7 @@ import './Timer.scss';
 const Timer = () => {
 
   const history = useHistory();
-  let [timer, setTimer] = useState("...waiting");
+  let [timer, setTimer] = useState("...Ready");
 
   // Establish our Maze context
   const { state, dispatch } = useContext(MazeContext);
@@ -23,7 +23,7 @@ const Timer = () => {
       interval = setInterval(() => {
         let timeElapsed = (new Date().getTime() - state.timeStart) / 1000;
         setTimer(timeElapsed.toFixed(3));
-      }, 97);
+      }, 107);
     }
     return(() => interval);
     // eslint-disable-next-line

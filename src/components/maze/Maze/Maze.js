@@ -42,7 +42,7 @@ const Maze = () => {
 
   useEffect(() => {
     let mounted = true;
-    if ( state.playerPath.length > 1 && !state.timeStart && mounted) {
+    if ( state.playerPath.length >= 1 && !state.timeStart && mounted) {
       dispatch({ type: 'start-timer' });
       
     }
