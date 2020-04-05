@@ -121,6 +121,8 @@ const drawMaze = (maze, scale, ctx, canvas, lineWidth) => {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.lineWidth = lineWidth;
 
+  // Need this on intersections to avoid rough edges
+  let lineBuffer = lineWidth / 2 - 1;
   // Insert trophy on win cell
   let trophyImg = new Image();
   trophyImg.src = require('../assets/images/trophy.svg');
@@ -142,23 +144,23 @@ const drawMaze = (maze, scale, ctx, canvas, lineWidth) => {
         if ( !edge ){
           switch (e) {
             case 0:
-              ctx.moveTo(x * scale - 2.5, y * scale);
-              ctx.lineTo(x * scale + scale + 2.5, y * scale);
+              ctx.moveTo(x * scale - lineBuffer, y * scale);
+              ctx.lineTo(x * scale + scale + lineBuffer, y * scale);
               ctx.stroke();
             break;
             case 1:
-              ctx.moveTo(x * scale + scale, y * scale - 2.5);
-              ctx.lineTo(x * scale + scale, y * scale + scale + 2.5);
+              ctx.moveTo(x * scale + scale, y * scale - lineBuffer);
+              ctx.lineTo(x * scale + scale, y * scale + scale + lineBuffer);
               ctx.stroke();
             break;
             case 2:
-              ctx.moveTo(x * scale - 2.5, y * scale + scale);
-              ctx.lineTo(x * scale + scale + 2.5, y * scale + scale);
+              ctx.moveTo(x * scale - lineBuffer, y * scale + scale);
+              ctx.lineTo(x * scale + scale + lineBuffer, y * scale + scale);
               ctx.stroke();
             break;
             case 3:
-              ctx.moveTo(x * scale, y * scale - 2.5);
-              ctx.lineTo(x * scale, y * scale + scale + 2.5);
+              ctx.moveTo(x * scale, y * scale - lineBuffer);
+              ctx.lineTo(x * scale, y * scale + scale + lineBuffer);
               ctx.stroke();
             break;
             default: return;

@@ -1,0 +1,15 @@
+@import 'themes/_dark.scss';
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+.Timer_wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: 'Share Tech Mono', monospace;
+  padding: 0.5rem;
+  color: $primary;
+  font-size: 2rem;
+  border: 3px solid $shade80;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+}

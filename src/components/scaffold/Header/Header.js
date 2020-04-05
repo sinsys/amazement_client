@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 // Element Components 
 import Button from 'components/elements/Button/Button';
+import Timer from 'components/widgets/Timer/Timer';
 
 // Files / Images
 import './Header.scss';
@@ -26,6 +27,7 @@ const Header = () => {
             history.push('/options')
           }}
         />
+      <Timer />
     </header>
 
   );
