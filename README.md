@@ -17,6 +17,7 @@ There is one catch... you cannot see the entire maze! You will be limited to a r
  - 3 levels of difficulty
  - Near infinite possible maze combinations
  - Keyboard or touch navigation
+ - High score board for all modes
 
 ## Technologies
 | Language | Framework/Library | Version |
@@ -35,6 +36,7 @@ There is one catch... you cannot see the entire maze! You will be limited to a r
 - Wireframes: [Wireframes Navigator](https://sinsys.github.io/amazement_client/wireframes/index.html)
 - User Flows: [User Flows on Draw.io](https://drive.google.com/file/d/186u-Wz0U53KK0lntC3kkYo8_H7HqwFfp/view?usp=sharing)
 - Feedback (1st Round): [Feedback response in Gist](https://gist.github.com/sinsys/e27cdeb263a5455df61886512cb4ec7b)
+- Feedback (2nd Round): [Feedback response in Gist](https://gist.github.com/sinsys/6859502b71d56e2f613b22f3707b1461)
 
 ## Requirements
 
