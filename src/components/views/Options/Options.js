@@ -46,11 +46,14 @@ const Options = () => {
       default: return;
     };
 
+    // Define the current viewport scale to be used
     let scale = window.innerWidth - window.innerHeight > 0
       ? window.innerHeight / 15 
       : window.innerWidth / 15;
 
+    // Get pixel values of where maze should be placed. It centers the top left tile on the character sprite
     let mazePosition = [((scale * 15) / 2 - (scale / 2)), ((scale * 15) / 2 - (scale / 2))];
+
     dispatch({
       type: 'create-maze',
       payload: {
@@ -65,6 +68,7 @@ const Options = () => {
 
   };
 
+  // High Score utilities
   let [ scores, setScores ] = useState([]);
 
   const renderScores = (scores) => {
@@ -79,12 +83,14 @@ const Options = () => {
     });
   };
 
+  // Switches game mode
   const handleOption = (option) => {
     setOption({ option: option });
   };
 
   useEffect(() => {
 
+    // Get new high scores if not fetched
     if ( !state.highScores.fetched ) {
       GamesApiService.getGames()
         .then(res => {

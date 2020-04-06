@@ -1,4 +1,4 @@
-// View Component - Options page before starting a maze
+// Widget Component - Timer for when a maze is actively being ran
 import React, { useContext, useEffect, useState } from 'react';
 
 // Contexts / Hooks
@@ -17,7 +17,7 @@ const Timer = () => {
   useEffect(() => {
     let interval = null;
     if ( state.active && state.timeStart ) {
-      
+      // timeStart is defined when the player moves, so we start the timer when the player moves for the first time
       interval = setInterval(() => {
         let timeElapsed = (new Date().getTime() - state.timeStart) / 1000;
         let formattedTime = timeElapsed

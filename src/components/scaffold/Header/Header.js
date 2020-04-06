@@ -1,4 +1,5 @@
 // Scaffolding Component - Header
+// This is used for back navigation and the timer
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 

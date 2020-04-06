@@ -4,7 +4,7 @@ import React from 'react';
 // Files
 import './Button.scss';
 
-// Used commonly throughout the app as a button. Accepts all props for configuration
+// Used commonly throughout the app as a button. Accepts all standard props for configuration
 const Button = (props) => {
   return (
 

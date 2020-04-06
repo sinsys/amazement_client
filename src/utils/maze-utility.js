@@ -171,12 +171,14 @@ const drawMaze = (maze, scale, ctx, canvas, lineWidth) => {
   });
 };
 
+// Highlight the visited cell by 0.25 opacity white
 const markPathVisited = (row, col, scale, ctx) => {
   ctx.globalAlpha = 0.25;
   ctx.fillStyle = "#FEFEFE"
   ctx.fillRect(scale * col, scale * row, scale, scale);
 };
 
+// Draw the mini maze for results
 const drawResultsMaze = (maze, scale, canvas, ctx, playerPath, lineWidth) => {
   drawMaze(maze, scale, ctx, canvas, lineWidth);
   playerPath.map(cell => {

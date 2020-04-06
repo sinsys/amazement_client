@@ -17,6 +17,7 @@ const GamesApiService = {
         )
     );
   },
+
   getGameById: (gameUUID) => {
     return (
       fetch(`${config.API_ENDPOINT}/games/${gameUUID}`, {
@@ -31,6 +32,7 @@ const GamesApiService = {
         )
     );
   },
+  
   addGame: (newGame) => {
     return (
       fetch(`${config.API_ENDPOINT}/games`, {

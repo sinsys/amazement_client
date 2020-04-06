@@ -1,4 +1,4 @@
-// Scaffolding Component - Header
+// Viewport Component - Restrictive viewport for the user
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -54,7 +54,8 @@ const Viewport = () => {
 
   useEffect(() => {
     let mounted = true;
-    // Need to implement further. Basic test to display when player wins
+
+    // Validate win condition
     if ( state.won && mounted) {
       dispatch({ type: 'end-game' });
       history.push('/results');

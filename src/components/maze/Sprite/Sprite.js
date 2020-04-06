@@ -1,4 +1,4 @@
-// Scaffolding Component - Header
+// Sprite Component - Character Sprite using gifs
 import React, { useContext, useEffect, useState } from 'react';
 
 // Contexts / Hooks
@@ -57,11 +57,12 @@ const Sprite = (props) => {
       setMoving(false);
     }, 300);
   };
-  const [ spriteImg, setSpriteImg ] = useState({ img: standDown });
 
+  const [ spriteImg, setSpriteImg ] = useState({ img: standDown });
 
   useEffect(() => {
 
+    // Event listeners for keyboard or mouse controls
     if (state.active){
       
       if ( keyboard.inputUp || props.touchDir.up ) {
@@ -102,14 +103,6 @@ const Sprite = (props) => {
         alt="character-sprite"
       />
     </div>
-
-    // <canvas
-    //   ref={spriteCanvasRef}
-    //   width={mazeContext.state.scale * 15}
-    //   height={mazeContext.state.scale * 15}
-    //   id="sprite-canvas"
-    // />
-
   );
 
 };

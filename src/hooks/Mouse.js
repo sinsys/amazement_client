@@ -1,4 +1,5 @@
-// Hook - Keyboard inputs - Detects when keyboard keys are pressed
+// This method was pushed aside in favor of event listeners on the UI arrows
+// Leaving this in the codebase in case we refactor all inputs to a single hook management
 import { useState, useEffect } from 'react';
 
 function useTouchPress(dir) {
