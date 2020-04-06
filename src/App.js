@@ -16,6 +16,7 @@ import Results from 'components/views/Results/Results';
 import './App.scss';
 
 const App = () => {
+  // Resolves address bar showing on mobile (mostly) - Some quirkiness with older iPhones
   const hideAddressBar = () => {
     if( !window.location.hash ) {
       if( document.height < window.outerHeight ) {

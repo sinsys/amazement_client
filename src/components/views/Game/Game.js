@@ -1,4 +1,4 @@
-// Canvas Component - Maze Canvas
+// Game Component - Wrapper for all of the Game
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 

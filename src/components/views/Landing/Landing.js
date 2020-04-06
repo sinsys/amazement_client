@@ -1,4 +1,4 @@
-// View component - Root page for logged in users
+// View component - Root page for introduction
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 

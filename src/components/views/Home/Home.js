@@ -1,4 +1,4 @@
-// View component - Root page for logged in users
+// View component - Title screen
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
